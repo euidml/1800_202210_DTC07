@@ -6,7 +6,7 @@
 
 ## General Info
 This browser based web application to ...
-* Hi my name is Edward. I'm excited about this project because I want to enhance my coding skills!
+* Hi my name is Edward. I'm excited about this project because I want to enhance and upgrade my coding skills!
 * Hi my name is run. I'm excited to get it done.
 * Hi my name is Jason. I'm exited about this project because i am new
 	
