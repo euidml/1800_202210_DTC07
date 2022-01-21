@@ -7,6 +7,7 @@
 ## General Info
 This browser based web application to ...
 * Hi my name is Edward. I'm excited about this project because I want to enhance my coding skills!
+* Hi my name is Run. I'm excited about this project because I want to learn more about programming!
 	
 ## Technologies
 Technologies used for this project:
