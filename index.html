@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>My BCIT Project</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
+  <meta charset="utf-8">
+  <title>My BCIT Project</title>
+  <meta name="comp1800 boilerplate code" content="my bcit project">
+  <meta name="author" content="BCIT">
 
-      <!-- Required meta tags -->
+  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,26 +18,41 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .jumbotron {
+      align-items: center;
+      display: flex;
+      background-image: url('./images/becca-tapert-bmOtCRZndE4-unsplash.jpg');
+      background-size: cover;
+      background-color: #898888;
+      height: 50vh;
+      color: white;
+    }
+    .body_word{
+      color: black;
+      font-weight: bold;
+      font-family: serif ;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-          <div class="col-10 col-sm-8 col-lg-6">
-            <img src="images/becca-tapert-bmOtCRZndE4-unsplash.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="900" height="700">
-          </div>
-          <div class="col-lg-6">
-            <h1 class="display-5 fw-bold lh-1 mb-3">Oring</h1>
-            <p class="lead">A dating web app to create a platform and community for olympic athletes to spend a more meaningful time post game by providing an exclusive athlete social networking experience.</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Login</button>
-            </div>
-          </div>
-        </div>
+  <section class="jumbotron">
+    <div class="container">
+      <div class="row text-center">
+        <h1 class="body_word">Oring</h1>
+        <p class="body_word"> a dating web app to create a platform and community for olympic athletes to spend a more meaningful time post game by providing <br> an exclusive athlete social networking experience.
+        </p>
+        <p><a class="btn btn-primary btn-lg" href="precos" role="button"> Login </a></p>
       </div>
-    
-
+    </div>
+  </section>
 </body>
 
 </html>
