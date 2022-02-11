@@ -19,6 +19,13 @@
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
   <style>
+    #logo_oring{
+      width: 70px;
+      margin: 0
+    }
+    .nav_elements{
+      text-align: right;
+    }
     body {
       margin: 0;
       padding: 0;
@@ -38,11 +45,30 @@
       font-weight: bold;
       font-family: serif ;
     }
+    a{
+      text-decoration: none;
+    }
   </style>
 </head>
 
 <body>
-
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h6  class="nav_elements"><a href="./profile">Profile setting</a></h6>
+      <h6  class="nav_elements"><a href="./filter">Search with filter</a></h6>
+      <h6  class="nav_elements"><a href="./preference">Preference</a></h6>
+      <h6  class="nav_elements"><a href="./favourites">Favourites</a></h6>
+      <h6  class="nav_elements"><a href="./pictures">Pictures</a></h6>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <img id="logo_oring" src="./images/oring.png">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div> 
+  </nav>
   <section class="jumbotron">
     <div class="container">
       <div class="row text-center">
