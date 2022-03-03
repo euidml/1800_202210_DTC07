@@ -4,7 +4,7 @@ import { Link as RouterDomLink, useNavigate } from "react-router-dom";
 import {
   auth,
   registerWithEmailAndPassword,
-} from "./firebase";
+} from "../firebase";
 import {
     Grid,
     Paper,
