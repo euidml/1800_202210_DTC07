@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link as RouterDomLink, useNavigate } from "react-router-dom";
 import { } from "react-router-dom";
-import { auth, sendPasswordReset as sendPasswordResetEmail } from "./firebase";
+import { auth, sendPasswordReset as sendPasswordResetEmail } from "../firebase";
 import {
     Grid,
     Paper,
@@ -12,7 +12,7 @@ import {
     Typography,
     Link,
   } from "@material-ui/core";
-import logo from "./oring_logo.png";
+import logo from "../oring_logo.png";
 function Reset() {
   const [email, setEmail] = useState("");
   const [user, loading, error] = useAuthState(auth);

@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Login from "./components-login/login.js";
 import UserRegister from "./components-login/Register.js";
-import ResetUserPassword from "./Reset.js"
+import ResetUserPassword from "./components-login/Reset.js"
 import TinderCards from "./mainProfileCards"
 import Dashboard from "./main";
 import { Grid } from "@material-ui/core";
