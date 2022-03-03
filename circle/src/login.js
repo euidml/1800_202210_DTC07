@@ -76,7 +76,7 @@ const Login = () => {
         variant="contained"
         style={btnstyle}
         fullWidth
-        onClick={() => signInWithEmailAndPassword(email, password)}
+        onClick={() => signInWithEmailAndPassword(auth, email, password)}
       >
         Sign in
       </Button>
