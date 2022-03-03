@@ -19,7 +19,7 @@ function Register() {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [user, loading, error] = useAuthState(auth);
-    const history = useNavigate();
+    const navigate = useNavigate();
     const paperStyle = {
       padding: 20,
       height: "70vh",
@@ -34,7 +34,7 @@ function Register() {
     };
     useEffect(() => {
       if (loading) return;
-      if (user) history.replace("/dashboard");
+      if (user) return navigate("/dashboard");
     }, [user, loading]);
     return(
     <Grid
