@@ -4,13 +4,14 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import IconButton from '@mui/material/IconButton';
 import {logout} from "./firebase";
+import logo from "./Olympic_Rings.svg";
 
 function Header() {
     return (
         <div className="header">
             <img
                 className="header_logo"
-                src="https://upload.wikimedia.org/wikipedia/en/b/b1/Olympic_Rings.svg"
+                src={logo}
                 alt="logo" />
 
             <IconButton>

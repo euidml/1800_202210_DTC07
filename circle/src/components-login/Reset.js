@@ -12,7 +12,7 @@ import {
     Typography,
     Link,
   } from "@material-ui/core";
-import logo from "../oring_logo.png";
+import logo from "../Olympic_Rings.svg";
 function Reset() {
   const [email, setEmail] = useState("");
   const [user, loading, error] = useAuthState(auth);

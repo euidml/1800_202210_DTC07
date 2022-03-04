@@ -13,7 +13,8 @@ import {
 } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import logo from "../oring_logo.png";
+import logo from "../Olympic_Rings.svg";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");

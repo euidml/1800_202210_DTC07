@@ -13,7 +13,7 @@ import {
     Typography,
   } from "@material-ui/core";
   import FormControlLabel from "@material-ui/core/FormControlLabel";
-  import logo from "../oring_logo.png";
+  import logo from "../Olympic_Rings.svg";
 function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
