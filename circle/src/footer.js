@@ -37,10 +37,10 @@ const useStyles = makeStyles({
           className={classes.stickToBottom}
           icon-color={"#0000"}
           >
-          <BottomNavigationAction label='Home' icon={<HomeRoundedIcon/>}/>
-          <BottomNavigationAction label='Favorites' icon={<FavoriteRoundedIcon />}/>
-          <BottomNavigationAction label='Chat' icon={<ForumRoundedIcon />}/>
-          <BottomNavigationAction label='Profile' onClick={logout} icon={<PersonRoundedIcon />}/>
+          <BottomNavigationAction icon={<HomeRoundedIcon/>}/>
+          <BottomNavigationAction icon={<FavoriteRoundedIcon />}/>
+          <BottomNavigationAction icon={<ForumRoundedIcon />}/>
+          <BottomNavigationAction onClick={logout} icon={<PersonRoundedIcon />}/>
         </BottomNavigation>
       </div>
     );
