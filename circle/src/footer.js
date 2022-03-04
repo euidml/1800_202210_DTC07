@@ -6,6 +6,7 @@ import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded';
 import ForumRoundedIcon from '@material-ui/icons/ForumRounded';
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import { makeStyles } from '@material-ui/core/styles'
+import { logout } from "./firebase";
 
 const useStyles = makeStyles({
     stickToBottom: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles({
           <BottomNavigationAction label='Home' icon={<HomeRoundedIcon/>}/>
           <BottomNavigationAction label='Favorites' icon={<FavoriteRoundedIcon />}/>
           <BottomNavigationAction label='Chat' icon={<ForumRoundedIcon />}/>
-          <BottomNavigationAction label='Profile' icon={<PersonRoundedIcon />}/>
+          <BottomNavigationAction label='Profile' onClick={logout} icon={<PersonRoundedIcon />}/>
         </BottomNavigation>
       </div>
     );
