@@ -5,12 +5,16 @@ import UserRegister from "./components-login/Register.js";
 import ResetUserPassword from "./components-login/Reset.js"
 import TinderCards from "./mainProfileCards"
 import Dashboard from "./main";
-import { Grid } from "@material-ui/core";
+import { Drawer, Grid } from "@material-ui/core";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./footer"
 
-function App() {
+
+function App(){
   return (
     <div className="app">
+      <Header />
       <Router>
         <Routes>
           <Route exact path="/" element={<Login/>} />
@@ -20,8 +24,8 @@ function App() {
           <Route exact path="/tindercards" element={<TinderCards/>}/>
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 }
-
 export default App;
