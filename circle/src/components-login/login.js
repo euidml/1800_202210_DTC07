@@ -73,6 +73,7 @@ const Login = () => {
       <Button
         type="submit"
         color="primary"
+        backgroundColor="Salmon"
         variant="contained"
         style={btnstyle}
         fullWidth

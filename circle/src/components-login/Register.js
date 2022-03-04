@@ -51,6 +51,7 @@ function Register() {
         <h2>Register your account</h2>
       </Grid>
       <TextField
+        label="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Full Name"
@@ -86,7 +87,7 @@ function Register() {
       </Button>
       <Typography>
         {" "}
-       Already have an account? <RouterDomLink to="/">Sign In</RouterDomLink>
+       Already have an account? <RouterDomLink to="/" >Sign In</RouterDomLink>
       </Typography>
     </Paper>
   </Grid>
