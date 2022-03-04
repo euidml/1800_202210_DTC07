@@ -3,7 +3,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import Header from "./Header.js"
+import Header from "./Header.js";
+import PhotoCardSwipe from "./mainProfileCards"
 import Footer from "./footer";
 
 function Dashboard() {
@@ -36,6 +37,7 @@ function Dashboard() {
          <button className="dashboard__btn" onClick={logout}>
           Logout
          </button> */}
+          <PhotoCardSwipe />
        </div>
       <Footer />
      </div>
