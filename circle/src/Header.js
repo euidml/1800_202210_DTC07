@@ -8,9 +8,7 @@ import {logout} from "./firebase";
 function Header() {
     return (
         <div className="header">
-            <IconButton onClick={logout}>
-                <LogoutIcon className='header_icon' fontSize='large' />
-            </IconButton>
+            <IconButton />
             <img
                 className="header_logo"
                 src="https://upload.wikimedia.org/wikipedia/en/b/b1/Olympic_Rings.svg"
