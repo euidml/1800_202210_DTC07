@@ -3,6 +3,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import Header from "./Header.js"
+import Footer from "./footer";
+
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
@@ -25,6 +28,7 @@ function Dashboard() {
   }, [user, loading]);
   return (
     <div className="dashboard">
+      <Header />
        <div className="dashboard__container">
         Logged in as
          <div>{name}</div>
@@ -33,6 +37,7 @@ function Dashboard() {
           Logout
          </button>
        </div>
+      <Footer />
      </div>
   );
 }

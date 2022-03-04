@@ -7,14 +7,11 @@ import TinderCards from "./mainProfileCards"
 import Dashboard from "./main";
 import { Drawer, Grid } from "@material-ui/core";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./footer"
 
 
 function App(){
   return (
-    <div className="app">
-      <Header />
+    <div className="app">=
       <Router>
         <Routes>
           <Route exact path="/" element={<Login/>} />
@@ -24,7 +21,6 @@ function App(){
           <Route exact path="/tindercards" element={<TinderCards/>}/>
         </Routes>
       </Router>
-      <Footer />
     </div>
   );
 }
