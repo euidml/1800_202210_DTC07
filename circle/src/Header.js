@@ -3,11 +3,12 @@ import './Header.css';
 import LogoutIcon from '@mui/icons-material/Logout';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import IconButton from '@mui/material/IconButton';
+import {logout} from "./firebase";
 
 function Header() {
     return (
         <div className="header">
-            <IconButton>
+            <IconButton onClick={logout}>
                 <LogoutIcon className='header_icon' fontSize='large' />
             </IconButton>
             <img
