@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db, logout } from "./firebase";
+import { auth, db} from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import Header from "./Header.js";
 import PhotoCardSwipe from "./mainProfileCards"
@@ -30,15 +30,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <Header />
-       <div className="dashboard__container">
-        {/* Logged in as
-         <div>{name}</div>
-         <div>{user?.email}</div>
-         <button className="dashboard__btn" onClick={logout}>
-          Logout
-         </button> */}
           <PhotoCardSwipe />
-       </div>
       <Footer />
      </div>
   );

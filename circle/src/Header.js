@@ -8,7 +8,7 @@ import logo from "./Olympic_Rings.svg";
 
 function Header() {
     return (
-        <div className="header">
+        <div className="header" >
             <img
                 className="header_logo"
                 src={logo}
