@@ -7,13 +7,15 @@ import ForumRoundedIcon from '@material-ui/icons/ForumRounded';
 import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
 import { makeStyles } from '@material-ui/core/styles'
 import { logout } from "./firebase";
+import LogOutPopout from "./LogOutPopout";
+import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
 const useStyles = makeStyles({
     stickToBottom: {
       width: '100%',
       position: 'fixed',
       bottom: 0,
-      background: "Salmon",
+      background: "Yellow",
       
     },
   });
@@ -41,6 +43,7 @@ const useStyles = makeStyles({
           <BottomNavigationAction icon={<FavoriteRoundedIcon />}/>
           <BottomNavigationAction icon={<ForumRoundedIcon />}/>
           <BottomNavigationAction onClick={logout} icon={<PersonRoundedIcon />}/>
+          <BottomNavigationAction onClick={LogOutPopout} icon={<LogoutRoundedIcon />}/>
         </BottomNavigation>
       </div>
     );
