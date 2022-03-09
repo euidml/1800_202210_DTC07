@@ -4,7 +4,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import IconButton from '@mui/material/IconButton';
 import { logout } from "./firebase";
-import logo from "./Circle.png";
+import logo from "./circlelogo.png";
 import { Link } from "react-router-dom";
 
 function Header() {
