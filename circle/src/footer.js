@@ -41,11 +41,9 @@ const useStyles = makeStyles({
           className={classes.stickToBottom}
           icon-color={"#0000"}
           >
-          <BottomNavigationAction icon={<HomeRoundedIcon/>}/>
+          <BottomNavigationAction component={Link} to='/dashboard' icon={<HomeRoundedIcon/>}/>
           <BottomNavigationAction icon={<FavoriteRoundedIcon />}/>
-          <Link to="/chats">
-          <BottomNavigationAction icon={<ForumRoundedIcon />}/>
-          </Link>
+          <BottomNavigationAction component={Link} to='/dashboard/chats' icon={<ForumRoundedIcon />}/>
           <BottomNavigationAction onClick={logout} icon={<PersonRoundedIcon />}/>
           <BottomNavigationAction onClick={LogOutPopout} icon={<LogoutRoundedIcon />}/>
         </BottomNavigation>

@@ -2,33 +2,36 @@ import React from "react";
 import "./App.css";
 import Login from "./components-login/login.js";
 import UserRegister from "./components-login/Register.js";
-import ResetUserPassword from "./components-login/Reset.js"
-import TinderCards from "./mainProfileCards"
+import ResetUserPassword from "./components-login/Reset.js";
+import Header from "./Header.js";
 import Dashboard from "./main";
-import { Drawer, Grid } from "@material-ui/core";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Chats from "./Chats";
-import Chat from "./Chat";
-import ChatScreen from "./ChatScreen";
+import Footer from "./footer";
+import {
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import { auth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-
-function App(){
+function App() {
+  const [user] = useAuthState(auth);
   return (
     <div className="app">
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<Login/>} />
-          <Route exact path="/resetpassword" element={<ResetUserPassword/>} />
-          <Route exact path="/register" element={<UserRegister/>} />
-          <Route exact path="/dashboard" element={<Dashboard/>}/>
-          <Route exact path="/tindercards" element={<TinderCards/>}/>
-          <Route exact path="/chat/:person" element={<Chat/>}/>
-          <Route exact path="/chatscreen" element={<ChatScreen/>}/>
-
+      {user&&<Header />}
+      <Routes>
+        {console.log(useLocation())}
+        <Route exact path="/" element={<Login />} />
+        <Route exact path="/register" element={<UserRegister />} />
+        <Route exact path="/resetpassword" element={<ResetUserPassword />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/dashboard/chats" element={<Chats/>} />
         
-        </Routes>
-      </Router>
+      </Routes>
+      {user&&<Footer />}
     </div>
   );
 }
+
 export default App;
