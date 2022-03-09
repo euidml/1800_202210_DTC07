@@ -7,16 +7,16 @@ function ChatScreen() {
     const [input, setInput] = useState('');
     const [messages, setMessages] = useState([
         {
-            name: 'Ellen',
-            image: 'https://i.pinimg.com/736x/10/86/f1/1086f1a42926178290008c39cf470715.jpg',
+            name: 'Sabrina',
+            image: 'https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg',
             message: 'whats up 😁'
         }, {
-            name: 'Ellen',
-            image: 'https://i.pinimg.com/736x/10/86/f1/1086f1a42926178290008c39cf470715.jpg',
+            name: 'Sabrina',
+            image: 'https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg',
             message: 'heyyy'
         }, {
 
-            message: 'whats up 😁'
+            message: 'whats up Sabrina😍'
         },
 
     ]);
@@ -29,7 +29,7 @@ function ChatScreen() {
 
     return (
     <div className='chatScreen'>
-        <p className='chatScreen_timestamp'>YOU MATCHED WITH ELLEN ON 10/09/20</p>
+        <p className='chatScreen_timestamp'>YOU MATCHED WITH SABRINA ON 10/09/20</p>
         {messages.map(message => (
             message.name ? (
             <div className='chatScreen_message'>
@@ -42,7 +42,7 @@ function ChatScreen() {
         </div>
         ) : (
         <div className='chatScreen_message'>
-            <p className='chatScreen_textUser'></p>
+            <p className='chatScreen_textUser'>{message.message}</p>
         </div>
         )
     )
@@ -52,13 +52,10 @@ function ChatScreen() {
         <input value={input} onChange={e => setInput(e.target.value)} className="chatScreen_inputField" placeholder="say hello" type="text" />
         <button onClick={handleSend} type="submit" className='chatScreen_inputButton'>SEND</button>
     </form>
-
-
     </div>
+
     );
     }
         
-
-
 
     export default ChatScreen;

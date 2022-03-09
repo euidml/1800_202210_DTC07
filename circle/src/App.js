@@ -6,6 +6,7 @@ import ResetUserPassword from "./components-login/Reset.js";
 import Header from "./Header.js";
 import Dashboard from "./main";
 import Chats from "./Chats";
+import ChatScreen from "./ChatScreen";
 import Footer from "./footer";
 import {
   Route,
@@ -26,8 +27,8 @@ function App() {
         <Route exact path="/register" element={<UserRegister />} />
         <Route exact path="/resetpassword" element={<ResetUserPassword />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route exact path="/dashboard/chats" element={<Chats/>} />
-        
+        <Route exact path="/dashboard/chats" element={<Chats />} />
+        <Route exact path="/chat/:person" element={<ChatScreen />} />
       </Routes>
       {user&&<Footer />}
     </div>

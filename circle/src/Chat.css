@@ -17,6 +17,10 @@ a {
     flex: 1;
 }
 
+.chat_details >h2 {
+    color: whitesmoke;
+}
+
 .chat_details >p {
     color: gray;
 }

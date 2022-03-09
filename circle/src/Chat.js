@@ -15,7 +15,7 @@ function Chat({ name, message, profilePic, timestamp }) {
             <p className='chat_timestamp'>{timestamp}</p>
         </div>
         </Link>
-        );
+    );
 }
 
 export default Chat;
