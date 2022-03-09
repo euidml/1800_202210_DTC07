@@ -9,6 +9,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import { logout } from "./firebase";
 import LogOutPopout from "./LogOutPopout";
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import { Link } from "react-router-dom";
+
 
 const useStyles = makeStyles({
     stickToBottom: {
@@ -41,7 +43,9 @@ const useStyles = makeStyles({
           >
           <BottomNavigationAction icon={<HomeRoundedIcon/>}/>
           <BottomNavigationAction icon={<FavoriteRoundedIcon />}/>
+          <Link to="/chats">
           <BottomNavigationAction icon={<ForumRoundedIcon />}/>
+          </Link>
           <BottomNavigationAction onClick={logout} icon={<PersonRoundedIcon />}/>
           <BottomNavigationAction onClick={LogOutPopout} icon={<LogoutRoundedIcon />}/>
         </BottomNavigation>
