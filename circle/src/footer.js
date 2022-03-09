@@ -17,7 +17,7 @@ const useStyles = makeStyles({
       width: '100%',
       position: 'fixed',
       bottom: 0,
-      background: "Yellow",
+      background: "#9acd32",
       
     },
   });
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
           <BottomNavigationAction icon={<FavoriteRoundedIcon />}/>
           <BottomNavigationAction component={Link} to='/dashboard/chats' icon={<ForumRoundedIcon />}/>
           <BottomNavigationAction onClick={logout} icon={<PersonRoundedIcon />}/>
-          <BottomNavigationAction onClick={LogOutPopout} icon={<LogoutRoundedIcon />}/>
+          {/* <BottomNavigationAction onClick={LogOutPopout} icon={<LogoutRoundedIcon />}/> */}
         </BottomNavigation>
       </div>
     );

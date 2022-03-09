@@ -1,15 +1,15 @@
 .header {
     display: flex;
     /* justify-content: space-between; */
-    border-bottom: 1px solid #f9f9f9;
+    /* border-bottom: 1px solid #f9f9f9; */
     align-items: center;
 }
 
 .header_logo {
-    height: 38px ;
-    /* object-fit: contain; */
+    height: 20% ;
+    object-fit: contain;
     width: 20%;
-    margin: auto auto auto 40%;
+    margin: 4% auto auto 52%;
 }
 
 .header_icon {
