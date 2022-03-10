@@ -14,15 +14,11 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import { auth } from "./firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 function App() {
-  const [user] = useAuthState(auth);
   return (
     <div className="app">
       {useLocation().pathname.includes("/dashboard")&&<Header />}
-      {/* {user&&<Header />} */}
       <Routes>
         {console.log(useLocation())}
         <Route exact path="/" element={<Login />} />
@@ -34,7 +30,6 @@ function App() {
         <Route exact path="/dashboard/profile" element={<ProfilePage />} />
       </Routes>
       {useLocation().pathname.includes("/dashboard")&&<Footer />}
-      {/* {user&&<Footer />} */}
     </div>
   );
 }
