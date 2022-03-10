@@ -13,7 +13,8 @@ import {
 } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import logo from "../Olympic_Rings.svg";
+import logo from "../circlelogo.png";
+import theme from "../Palette"
 
 
 const Login = () => {
@@ -28,8 +29,8 @@ const Login = () => {
     width: 280,
     margin: "20px auto",
   };
-  const logoStyle = { width: "100%" };
-  const btnstyle = { margin: "8px 0", backgroundColor: "Black" };
+  const logoStyle = { width: "20vh", height:"20vh" };
+  const btnstyle = { margin: "8px 0", backgroundColor: theme.palette.primary.main };
   useEffect(() => {
     if (loading) {
       // maybe trigger a loading screen
@@ -50,6 +51,7 @@ const Login = () => {
         <img src={logo} className="App-logo" alt="logo" style={logoStyle} />
         <h2>Welcome To Circle</h2>
       </Grid>
+      <Grid style={{height:"18vh"}}>
       <TextField
         label="Email"
         value={email}
@@ -71,10 +73,11 @@ const Login = () => {
         control={<Checkbox name="checkedB" color="primary" />}
         label="Remember me"
       />
+      </Grid>
       <Button
         type="submit"
         color="primary"
-        backgroundColor="Salmon"
+        bgcolor={theme.palette.primary.main}
         variant="contained"
         style={btnstyle}
         fullWidth

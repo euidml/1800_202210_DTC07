@@ -12,7 +12,9 @@ import {
     Typography,
     Link,
   } from "@material-ui/core";
-import logo from "../Olympic_Rings.svg";
+import logo from "../circlelogo.png";
+import theme from "../Palette"
+
 function Reset() {
   const [email, setEmail] = useState("");
   const [user, loading, error] = useAuthState(auth);
@@ -23,8 +25,8 @@ function Reset() {
     width: 280,
     margin: "20px auto",
   };
-  const logoStyle = { width: "100%" };
-  const btnstyle = { margin: "8px 0", backgroundColor: "Black" };
+  const logoStyle = { width: "20vh", height: "20vh" };
+  const btnstyle = { margin: "8px 0", backgroundColor: theme.palette.primary.main };
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/dashboard");
@@ -42,6 +44,7 @@ function Reset() {
         <img src={logo} className="App-logo" alt="logo" style={logoStyle} />
         <h2>Welcome To Circle</h2>
       </Grid>
+      <Grid style={{height:"18vh"}}>
       <TextField
         label="Email"
         value={email}
@@ -50,6 +53,7 @@ function Reset() {
         fullWidth
         required
       />
+      </Grid>
       <Button
         type="submit"
         color="primary"

@@ -13,7 +13,8 @@ import {
     Typography,
   } from "@material-ui/core";
   import FormControlLabel from "@material-ui/core/FormControlLabel";
-  import logo from "../Olympic_Rings.svg";
+  import logo from "../circlelogo.png";
+  import theme from "../Palette"
 function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -26,8 +27,8 @@ function Register() {
       width: 280,
       margin: "20px auto",
     };
-    const logoStyle = { width: "100%" };
-    const btnstyle = { margin: "8px 0", backgroundColor: "Black" };
+    const logoStyle = { width: "20vh", height:"20vh" };
+    const btnstyle = { margin: "8px 0", backgroundColor: theme.palette.primary.main };
     const register = () => {
       if (!name) alert("Please enter name");
       registerWithEmailAndPassword(name, email, password);
@@ -50,6 +51,7 @@ function Register() {
         <img src={logo} className="App-logo" alt="logo" style={logoStyle} />
         <h2>Register your account</h2>
       </Grid>
+      <Grid style={{height:"18vh"}}>
       <TextField
         label="Name"
         value={name}
@@ -75,6 +77,7 @@ function Register() {
         fullWidth
         required
       />
+      </Grid>
       <Button
         type="submit"
         color="primary"
