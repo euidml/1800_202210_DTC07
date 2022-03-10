@@ -21,7 +21,8 @@ function App() {
   const [user] = useAuthState(auth);
   return (
     <div className="app">
-      {user&&<Header />}
+      {useLocation().pathname.includes("/dashboard")&&<Header />}
+      {/* {user&&<Header />} */}
       <Routes>
         {console.log(useLocation())}
         <Route exact path="/" element={<Login />} />
@@ -32,7 +33,8 @@ function App() {
         <Route exact path="/chat/:person" element={<ChatScreen />} />
         <Route exact path="/dashboard/profile" element={<ProfilePage />} />
       </Routes>
-      {user&&<Footer />}
+      {useLocation().pathname.includes("/dashboard")&&<Footer />}
+      {/* {user&&<Footer />} */}
     </div>
   );
 }
