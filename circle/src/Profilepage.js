@@ -1,11 +1,11 @@
 import "../src/Profilepage.css"
 import Profileform from "./Profileform"
-import {Button} from "@material-ui/core"
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link as RouterDomLink, useNavigate } from "react-router-dom";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import LogOutPopout from "./LogOutPopout";
 
 
 function Profilepage() {
@@ -30,9 +30,7 @@ function Profilepage() {
   }, [user, loading]);
     return (
         <div className="Profilepage">
-            <Button onClick={logout}>
-                Sign Out
-            </Button>
+            <LogOutPopout />
             <Profileform/>
         </div>
     );

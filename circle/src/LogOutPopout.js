@@ -6,6 +6,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import { logout } from "./firebase";
+
 
 export default function LogOutPopout() {
   const [open, setOpen] = React.useState(false);
@@ -39,7 +41,7 @@ export default function LogOutPopout() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>No</Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={ logout } autoFocus>
             Yes
           </Button>
         </DialogActions>
