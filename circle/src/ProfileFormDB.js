@@ -1,20 +1,18 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "./firebase";
-import { doc, setDoc } from "firebase/firestore";
-
-
-
+import { doc, setDoc, updateDoc } from "firebase/firestore";
 
 function editUserInfo(uid, name, age, gender, sport, hobbies, game){
-    setDoc(doc(db, "UserInfo", uid), {
-        name: name,
-        age: age,
-        gender: gender,
-        sport: sport,
-        hobbies: hobbies,
-        game: game,
-      })
-      .then(() => {
+  const currentUserInfo = doc(db, "UserInfo", uid)
+  updateDoc(currentUserInfo, {
+    name: name,
+      "personalInfo":{
+      age: age,
+      gender: gender,
+      sport: sport,
+      hobbies: hobbies,
+      game: game,}
+  }).then(() => {
         alert("Information Successfully Saved!");
         // setLoader(false);
       })
