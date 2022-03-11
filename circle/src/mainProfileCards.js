@@ -6,13 +6,19 @@ import './mainProfileCards.css';
 function TinderCards() {
     const [people, setPeople] = useState([
         {
+            name: 'Run',
+            url: 'https://friendlystock.com/wp-content/uploads/2020/04/6-mexican-chicken-cartoon-clipart.jpg'
+        },
+        {
             name: 'Jason',
             url: 'https://media1.popsugar-assets.com/files/thumbor/KOb-u-ocyOE0Mw27W17OZN1QOSQ/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2016/03/18/896/n/1922398/1385d1ed_edit_img_image_36158137_1416727436_JMomoa/i/Jason-Momoa.jpg'
         },
         {
             name: 'Edward',
             url: 'https://i.pinimg.com/736x/bc/84/80/bc8480ce0718c4d84576606c64d73da6--twilight-saga-new-moon-twilight-movie.jpg'
-        }
+        },
+     
+
     ]);
 
     return (
