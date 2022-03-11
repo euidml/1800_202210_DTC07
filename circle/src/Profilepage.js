@@ -6,6 +6,7 @@ import { Link as RouterDomLink, useNavigate } from "react-router-dom";
 import { auth, db } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import LogOutPopout from "./LogOutPopout";
+import { positions } from "@mui/system";
 
 
 function Profilepage() {
