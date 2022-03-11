@@ -8,6 +8,9 @@
 
 body {
   background-color: rgb(248, 246, 253);
+  min-height: 400px;
+  margin-bottom: 100px;
+  clear: both;
 }
 
 body,

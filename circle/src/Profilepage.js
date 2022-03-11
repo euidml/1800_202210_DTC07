@@ -3,7 +3,7 @@ import Profileform from "./Profileform"
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link as RouterDomLink, useNavigate } from "react-router-dom";
-import { auth, db, logout } from "./firebase";
+import { auth, db } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import LogOutPopout from "./LogOutPopout";
 
@@ -30,7 +30,7 @@ function Profilepage() {
   }, [user, loading]);
     return (
         <div className="Profilepage">
-            <LogOutPopout />
+          <LogOutPopout className="logout"/>
             <Profileform/>
         </div>
     );

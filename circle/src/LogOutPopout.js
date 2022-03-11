@@ -23,7 +23,7 @@ export default function LogOutPopout() {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-         <LogoutRoundedIcon/>
+         <LogoutRoundedIcon />
       </Button>
       <Dialog
         open={open}
