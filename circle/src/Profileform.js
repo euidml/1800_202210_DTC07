@@ -2,72 +2,43 @@ import "../src/Profilepage.css";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "./firebase";
-import {setDoc, doc } from "firebase/firestore";
-import editUserInfo from "./ProfileFormDB"
-// import "firebase/auth"
-import "firebase/firestore"
-
+import { setDoc, getDoc, doc } from "firebase/firestore";
+import editUserInfo from "./ProfileFormDB";
 
 const Profileform = () => {
   const [user, loading, error] = useAuthState(auth);
-  var [name, setName] = useState("");
+  const [name, setName] = useState("");
   var [age, setAge] = useState("");
   var [gender, setGender] = useState("");
   var [sport, setSport] = useState("");
   var [hobbies, setHobbies] = useState("");
   var [game, setGame] = useState("");
-//   auth.onAuthStateChanged((user) => {
-//     // Check if user is signed in:
-//     if (user) {
-//       //go to the correct user document by referencing to the user uid
-//       //get the document for current user.
-//       collection(db, "UserInfo")
-//         .doc(user.uid)
-//         .get()
-//         .then((UserInfoDoc) => {
-//           //get the data fields of the user
-//           var userName = UserInfoDoc.data().name;
-//           var userAge = UserInfoDoc.data().age;
-//           var userGender = UserInfoDoc.data().gender;
-
-//           //if the data fields are not empty, then write them in to the form.
-//           if (userName != null) {
-//             document.getElementById("nameInput").value = userName;
-//           }
-//           if (userAge != null) {
-//             document.getElementById("ageInput").value = userAge;
-//           }
-//           if (userGender != null) {
-//             document.getElementById("genderInput").value = userGender;
-//           }
-//         });
-//     }
-//   });
-
-  //   const [loader, setLoader] = useState(false);
-
+  const [loader, setLoader] = useState(true);
+  const [refresh, setRefresh] = useState(true);
+//   if (refresh) {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        const currentUserInfo = getDoc(doc(db, "UserInfo", user.uid))
+        currentUserInfo.then((UserInfoDoc) => {
+        //   for (const item in UserInfoDoc.data()) {
+        //     if (item != null) {
+        //         console.log(item, UserInfoDoc.data()[item])
+        //       document.getElementById(`${item}Input`).value =
+        //         UserInfoDoc.data()[item];
+        //     }
+        //   }
+        if (UserInfoDoc.data()[name]!= null) {
+            console.log(UserInfoDoc.data()[name])
+            document.getElementById(`nameInput`).value = UserInfoDoc.data()[name];}
+        });
+      }
+    });
+    // setRefresh(false);
+//   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    setDoc(doc(db, "UserInfo", user.uid), {
-        name: name,
-        age: age,
-        gender: gender,
-        sport: sport,
-        hobbies: hobbies,
-        game: game,
-      })
-      .then(() => {
-        alert("Information Successfully Saved!");
-        // setLoader(false);
-      })
-      .catch((error) => {
-        alert(error.message);
-        // setLoader(false);
-      });
-    // editUserInfo(user.uid,name, age, gender, sport, hobbies, game)
-    // setLoader(true);
+    editUserInfo(user.uid, name, age, gender, sport, hobbies, game);
   };
-
   return (
     <form className="form" onSubmit={handleSubmit}>
       <h1> Profile Information </h1>
@@ -98,7 +69,7 @@ const Profileform = () => {
 
       <label> Main sport </label>
       <input
-        id="mainSportInput"
+        id="sportInput"
         placeholder="Sport"
         value={sport}
         onChange={(e) => setSport(e.target.value)}
@@ -114,7 +85,7 @@ const Profileform = () => {
 
       <label> Two Truths, One Lie </label>
       <textarea
-        id="twoTruthOneLieInput"
+        id="gameInput"
         placeholder="Game"
         value={game}
         onChange={(e) => setGame(e.target.value)}
