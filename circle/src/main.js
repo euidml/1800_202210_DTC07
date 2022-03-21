@@ -32,9 +32,7 @@ function Dashboard() {
   }, [user, loading]);
   return (
     <div className="dashboard">
-      {/* <Header /> */}
         <PhotoCardSwipe/>
-      {/* <Footer /> */}
     </div>
   );
 }

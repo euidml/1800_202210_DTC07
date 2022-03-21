@@ -6,6 +6,7 @@ import {
     createUserWithEmailAndPassword,
     sendPasswordResetEmail,
     signOut,
+    onAuthStateChanged,
 } from "firebase/auth";
 import {
 getFirestore,
@@ -17,6 +18,7 @@ where,
  doc,
  setDoc
 } from "firebase/firestore";
+import { useEffect, useState } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -83,3 +85,15 @@ export {
     sendPasswordReset,
     logout,
   };
+
+  // Custom Hook
+export function useAuth() {
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, users => setCurrentUser(users) );
+    return unsub;
+  }, [])
+
+  return currentUser;
+}

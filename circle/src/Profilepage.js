@@ -31,7 +31,6 @@ function Profilepage() {
   }, [user, loading]);
     return (
         <div className="Profilepage">
-          <LogOutPopout className="logout"/>
             <Profileform/>
         </div>
     );

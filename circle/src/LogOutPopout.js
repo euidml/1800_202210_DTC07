@@ -22,8 +22,8 @@ export default function LogOutPopout() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen} className="button">
-         <LogoutRoundedIcon />
+      <Button variant="outlined" fullWidth={true} color='secondary' onClick={handleClickOpen} className="button">
+        LOGOUT
       </Button>
       <Dialog
         open={open}

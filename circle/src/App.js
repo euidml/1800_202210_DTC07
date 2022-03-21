@@ -9,6 +9,7 @@ import Chats from "./Chats";
 import ChatScreen from "./ChatScreen";
 import ProfilePage from "./Profilepage"
 import Footer from "./footer";
+import Settingpage from "./Settingpage";
 import {
   Route,
   Routes,
@@ -28,8 +29,10 @@ function App() {
         <Route exact path="/dashboard/chats" element={<Chats />} />
         <Route exact path="/chat/:person" element={<ChatScreen />} />
         <Route exact path="/dashboard/profile" element={<ProfilePage />} />
+        <Route exact path="/bottom/settingpage" element={<Settingpage />} />
       </Routes>
       {useLocation().pathname.includes("/dashboard")&&<Footer />}
+      {useLocation().pathname.includes("/bottom")&&<Footer />}
     </div>
   );
 }
