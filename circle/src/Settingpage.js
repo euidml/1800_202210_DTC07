@@ -8,6 +8,7 @@ import SettingProfileCard from "./SettingProfileCard"
 import { Button } from '@material-ui/core';
 import { Link as RouterDomLink } from "react-router-dom";
 import LogOutPopout from './LogOutPopout';
+import { logout } from "./firebase";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
