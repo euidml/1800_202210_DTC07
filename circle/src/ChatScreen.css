@@ -39,7 +39,7 @@
     flex: 1;
     padding: 20px;
     border: none;
-
+    font-size: larger;
 }
 
 .chatScreen_inputButton {
@@ -48,6 +48,7 @@
     background-color: white;
     font-weight: bolder;
     color: #29b3cd;
+    font-size: larger;
 }
 
 .header_icon {

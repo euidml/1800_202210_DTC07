@@ -40,7 +40,7 @@ function ChatScreen() {
 
     return (
     <div className='chatScreen'>
-        
+
         <Link to="/dashboard/chats">
         <IconButton>
         <ArrowBackIosNewIcon className='header_icon' fontSize='large' />
@@ -67,7 +67,7 @@ function ChatScreen() {
     )}
 
     <form className='chatScreen_input'>
-        <input value={input} onChange={e => setInput(e.target.value)} className="chatScreen_inputField" placeholder="say hello" type="text" />
+        <input value={input} onChange={e => setInput(e.target.value)} className="chatScreen_inputField" placeholder="Send a message" type="text" />
         <button onClick={handleSend} type="submit" className='chatScreen_inputButton'>SEND</button>
     </form>
     </div>
