@@ -51,7 +51,6 @@
     font-size: larger;
 }
 
-.header_icon {
-    background-color: #29b3cd;
-    size: 5px;
+.backarrow {
+    padding-top: 8px;
 }

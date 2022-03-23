@@ -43,7 +43,7 @@ function ChatScreen() {
 
         <Link to="/dashboard/chats">
         <IconButton>
-        <ArrowBackIosNewIcon className='header_icon' fontSize='large' />
+        <ArrowBackIosNewIcon className='backarrow' fontSize='large' />
         </IconButton>
         </Link>
 

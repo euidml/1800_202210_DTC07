@@ -9,12 +9,11 @@
     height: 20% ;
     object-fit: contain;
     width: 20%;
-    margin: 6% auto auto 50%;
+    margin: 6% auto auto 40%;
 }
 
 .header_icon {
     padding: 20px;
     width: 15%;
     float: right;
-   
 }
