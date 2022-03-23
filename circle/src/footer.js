@@ -4,13 +4,9 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded';
 import ForumRoundedIcon from '@material-ui/icons/ForumRounded';
-import PersonRoundedIcon from '@material-ui/icons/PersonRounded';
+import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import { makeStyles } from '@material-ui/core/styles'
-import { logout } from "./firebase";
-import LogOutPopout from "./LogOutPopout";
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { Link as RouterDomLink } from "react-router-dom";
-
 
 const useStyles = makeStyles({
     stickToBottom: {
@@ -31,11 +27,13 @@ const useStyles = makeStyles({
     const handlechange =(event, newValue) => {
       setValue(newValue)
     }
+
+
     return (
   
       <div>
         <BottomNavigation
-          className={classes.root}
+          // className={classes.root}
           value={value}
           onChange={(event, newValue) => handlechange(event, newValue)}
           className={classes.stickToBottom}
@@ -44,8 +42,7 @@ const useStyles = makeStyles({
           <BottomNavigationAction component={RouterDomLink} to='/dashboard' icon={<HomeRoundedIcon/>}/>
           <BottomNavigationAction icon={<FavoriteRoundedIcon />}/>
           <BottomNavigationAction component={RouterDomLink} to='/dashboard/chats' icon={<ForumRoundedIcon />}/>
-          <BottomNavigationAction component={RouterDomLink} to='/dashboard/profile' icon={<PersonRoundedIcon />}/>
-          {/* <BottomNavigationAction onClick={LogOutPopout} icon={<LogoutRoundedIcon />}/> */}
+          <BottomNavigationAction component={RouterDomLink} to="/bottom/settingpage" icon={<SettingsRoundedIcon />}/>
         </BottomNavigation>
       </div>
     );

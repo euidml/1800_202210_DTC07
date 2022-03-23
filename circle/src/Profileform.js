@@ -15,28 +15,28 @@ const Profileform = () => {
   var [game, setGame] = useState("");
   const [loader, setLoader] = useState(true);
   const [refresh, setRefresh] = useState(true);
-//   if (refresh) {
-    auth.onAuthStateChanged((user) => {
+    {refresh && auth.onAuthStateChanged((user) => {
       if (user) {
         const currentUserInfo = getDoc(doc(db, "UserInfo", user.uid))
         currentUserInfo.then((UserInfoDoc) => {
-        //   for (const item in UserInfoDoc.data()) {
-        //     if (item != null) {
-        //         console.log(item, UserInfoDoc.data()[item])
-        //       document.getElementById(`${item}Input`).value =
-        //         UserInfoDoc.data()[item];
-        //     }
-        //   }
-        if (UserInfoDoc.data()[name]!= null) {
-            console.log(UserInfoDoc.data()[name])
-            document.getElementById(`nameInput`).value = UserInfoDoc.data()[name];}
+          for (const item in UserInfoDoc.data()) {
+            if (item != null) {
+                console.log(item, UserInfoDoc.data()[item])
+              // document.getElementById(`${item}Input`).setAttribute('value', UserInfoDoc.data()[item]);
+              age = UserInfoDoc.data()[age];
+            }
+          }
+        // if (UserInfoDoc.data()[name]!= null) {
+        //     console.log(UserInfoDoc.data()[name])
+        //     document.getElementById(`nameInput`).value = UserInfoDoc.data()[name];}
         });
+        setRefresh(false);
       }
     });
-    // setRefresh(false);
-//   }
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(user.uid)
     editUserInfo(user.uid, name, age, gender, sport, hobbies, game);
   };
   return (

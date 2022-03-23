@@ -6,6 +6,7 @@ import {
     createUserWithEmailAndPassword,
     sendPasswordResetEmail,
     signOut,
+    onAuthStateChanged,
 } from "firebase/auth";
 import {
 getFirestore,
@@ -18,6 +19,7 @@ where,
  setDoc,
  onSnapshot,
 } from "firebase/firestore";
+import { useEffect, useState } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -51,12 +53,13 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    await addDoc(collection(db, "users"), {
-      uid: user.uid,
+    await setDoc(doc(db, "UserInfo", user.uid), {
+      // uid: user.uid,
       name,
       authProvider: "local",
       email,
-    }).then(setDoc(doc(db, "UserInfo", user.uid),{name:name}));
+    })
+    console.log(doc(db, "UserInfo"))
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -85,3 +88,17 @@ export {
     logout,
   };
 
+<<<<<<< HEAD
+=======
+  // Custom Hook
+export function useAuth() {
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, users => setCurrentUser(users) );
+    return unsub;
+  }, [])
+
+  return currentUser;
+}
+>>>>>>> 2bf1448799d0248d4dda01fd89c432f8ab861d40

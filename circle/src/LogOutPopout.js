@@ -5,9 +5,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
-import { logout } from "./firebase";
-
+// import { logout } from "./firebase"; <= If used for logout button, it creates a buggy process
+import { Link as RouterDomLink } from "react-router-dom";
 
 export default function LogOutPopout() {
   const [open, setOpen] = React.useState(false);
@@ -22,8 +21,8 @@ export default function LogOutPopout() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen} className="button">
-         <LogoutRoundedIcon />
+      <Button variant="outlined" fullWidth={true} color='secondary' onClick={handleClickOpen}>
+        LOGOUT
       </Button>
       <Dialog
         open={open}
@@ -41,9 +40,7 @@ export default function LogOutPopout() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>No</Button>
-          <Button onClick={ logout } autoFocus>
-            Yes
-          </Button>
+          <Button component={RouterDomLink} to="/" >Yes</Button>
         </DialogActions>
       </Dialog>
     </div>
