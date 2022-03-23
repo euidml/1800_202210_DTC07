@@ -40,11 +40,12 @@ function ChatScreen() {
 
     return (
     <div className='chatScreen'>
-    <Link to="/dashboard/chats">
-    <IconButton>
-    <ArrowBackIosNewIcon className='header_icon' fontSize='large' />
-    </IconButton>
-    </Link>
+        
+        <Link to="/dashboard/chats">
+        <IconButton>
+        <ArrowBackIosNewIcon className='header_icon' fontSize='large' />
+        </IconButton>
+        </Link>
 
         <p className='chatScreen_timestamp'>YOU MATCHED WITH SABRINA ON 10/09/20</p>
         {messages.map(message => (

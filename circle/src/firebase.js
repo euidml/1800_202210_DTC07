@@ -88,8 +88,6 @@ export {
     logout,
   };
 
-<<<<<<< HEAD
-=======
   // Custom Hook
 export function useAuth() {
   const [currentUser, setCurrentUser] = useState();
@@ -101,4 +99,3 @@ export function useAuth() {
 
   return currentUser;
 }
->>>>>>> 2bf1448799d0248d4dda01fd89c432f8ab861d40

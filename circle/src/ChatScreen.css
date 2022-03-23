@@ -37,7 +37,7 @@
 
 .chatScreen_inputField {
     flex: 1;
-    padding: 10px;
+    padding: 20px;
     border: none;
 }
 
@@ -52,6 +52,4 @@
 .header_icon {
     background-color: #29b3cd;
     size: 5px;
-
-
 }
