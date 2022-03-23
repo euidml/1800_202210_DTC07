@@ -1,10 +1,21 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Avatar } from '@material-ui/core';
 import './ChatScreen.css';
+import { db } from './firebase';
+import { doc, onSnapshot } from 'firebase/firestore';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { Link } from "react-router-dom";
+import IconButton from '@mui/material/IconButton';
 
 
 function ChatScreen() {
     const [input, setInput] = useState('');
+
+    // const [messages, setMessages] = onSnapshot(doc(db, "messages", "message"), (messageDoc) => {
+    //     console.log("messages", messageDoc.data());
+    // })
+
+
     const [messages, setMessages] = useState([
         {
             name: 'Sabrina',
@@ -29,6 +40,12 @@ function ChatScreen() {
 
     return (
     <div className='chatScreen'>
+    <Link to="/dashboard/chats">
+    <IconButton>
+    <ArrowBackIosNewIcon className='header_icon' fontSize='large' />
+    </IconButton>
+    </Link>
+
         <p className='chatScreen_timestamp'>YOU MATCHED WITH SABRINA ON 10/09/20</p>
         {messages.map(message => (
             message.name ? (

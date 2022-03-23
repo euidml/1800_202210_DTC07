@@ -25,7 +25,7 @@ function App() {
         <Route exact path="/register" element={<UserRegister />} />
         <Route exact path="/resetpassword" element={<ResetUserPassword />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route exact path="/dashboard/chats" element={<Chats />} />
+        <Route exact path="/dashboard/chats" element={<Chats  />} />
         <Route exact path="/chat/:person" element={<ChatScreen />} />
         <Route exact path="/dashboard/profile" element={<ProfilePage />} />
       </Routes>
