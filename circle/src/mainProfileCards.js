@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TinderCard from 'react-tinder-card';
 import './mainProfileCards.css';
+import SwipeButtons from "./SwipeButtons";
 
 
 function TinderCards() {
@@ -29,7 +30,7 @@ function TinderCards() {
                         className="swipe"
                         key={person.name}
                         // line below disables swip up and down. Might have to delete later
-                        preventSwipe={['up', 'down']}
+                        preventSwipe={['down']}
                     >
                         <div
                             style={{ backgroundImage: `url(${person.url})` }}
@@ -41,6 +42,7 @@ function TinderCards() {
                     </TinderCard>
                 ))}
             </div>
+            <SwipeButtons/>
         </div>
     );
 }
