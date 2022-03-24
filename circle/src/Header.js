@@ -19,10 +19,10 @@ function Header() {
                     alt="logo" />
             </Link>
 
-
+{/* 
             <IconButton>
-                <FilterAltIcon className='header_icon' fontSize='large' />
-            </IconButton>
+                <FilterAltIcon className='go_away' fontSize='large' />
+            </IconButton> */}
         </div>
     )
 }

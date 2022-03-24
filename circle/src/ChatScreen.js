@@ -40,11 +40,12 @@ function ChatScreen() {
 
     return (
     <div className='chatScreen'>
-    <Link to="/dashboard/chats">
-    <IconButton>
-    <ArrowBackIosNewIcon className='header_icon' fontSize='large' />
-    </IconButton>
-    </Link>
+
+        <Link to="/dashboard/chats">
+        <IconButton>
+        <ArrowBackIosNewIcon className='backarrow' fontSize='large' />
+        </IconButton>
+        </Link>
 
         <p className='chatScreen_timestamp'>YOU MATCHED WITH SABRINA ON 10/09/20</p>
         {messages.map(message => (
@@ -66,7 +67,7 @@ function ChatScreen() {
     )}
 
     <form className='chatScreen_input'>
-        <input value={input} onChange={e => setInput(e.target.value)} className="chatScreen_inputField" placeholder="say hello" type="text" />
+        <input value={input} onChange={e => setInput(e.target.value)} className="chatScreen_inputField" placeholder="Send a message" type="text" />
         <button onClick={handleSend} type="submit" className='chatScreen_inputButton'>SEND</button>
     </form>
     </div>
