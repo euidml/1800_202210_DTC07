@@ -1,50 +1,74 @@
-import React, { useState } from 'react';
-import TinderCard from 'react-tinder-card';
-import './mainProfileCards.css';
+import React, { useEffect, useState } from "react";
+import TinderCard from "react-tinder-card";
+import "./mainProfileCards.css";
 import SwipeButtons from "./SwipeButtons";
-
+import { auth, db } from "./firebase";
+import { query, collection, getDocs, where, getDoc } from "firebase/firestore";
 
 function TinderCards() {
-    const [people, setPeople] = useState([
-        {
-            name: 'Run',
-            url: 'https://friendlystock.com/wp-content/uploads/2020/04/6-mexican-chicken-cartoon-clipart.jpg'
-        },
-        {
-            name: 'Jason',
-            url: 'https://media1.popsugar-assets.com/files/thumbor/KOb-u-ocyOE0Mw27W17OZN1QOSQ/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2016/03/18/896/n/1922398/1385d1ed_edit_img_image_36158137_1416727436_JMomoa/i/Jason-Momoa.jpg'
-        },
-        {
-            name: 'Edward',
-            url: 'https://i.pinimg.com/736x/bc/84/80/bc8480ce0718c4d84576606c64d73da6--twilight-saga-new-moon-twilight-movie.jpg'
-        },
-     
-
-    ]);
-
-    return (
-        <div>
-            <div className="tinderCards_cardContainers">
-                {people.map(person => (
-                    <TinderCard
-                        className="swipe"
-                        key={person.name}
-                        // line below disables swip up and down. Might have to delete later
-                        preventSwipe={['down']}
-                    >
-                        <div
-                            style={{ backgroundImage: `url(${person.url})` }}
-                            className="card"
-                        >
-
-                            <h3>{person.name}</h3>
-                        </div>
-                    </TinderCard>
-                ))}
+  const [people, setPeople] = useState([
+  ]);
+  const fetchProfilePhotos = async () => {
+    try {
+      const userInfo = collection(db, "UserInfo");
+      const q = query(userInfo, where("profilePhoto.availability", "==", true));
+      const doc = await getDocs(q);
+      const data = doc.docs;
+      console.log(doc.docs, doc.docs.length);
+      // for (let i = 0; i < doc.docs.length; i++) {
+      //   const person = doc.docs[i].data();
+      //   console.log(person);
+      //   setPeople(
+      //     (prev) => [
+      //       ...prev,
+      //       {
+      //         name: person.name.split(" ")[0],
+      //         url: person.profilePhoto.photo
+      //       }
+      //     ]
+      //   );
+      // }
+      data.map((person)=>{
+        setPeople(
+          (prev) => [
+            ...prev,
+            {
+              name: person.data().name.split(" ")[0],
+              url: person.data().profilePhoto.photo
+            }
+          ]
+        );
+      });
+      console.log(people)
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchProfilePhotos();
+  },[]);
+  return (
+    <div>
+      <div className="tinderCards_cardContainers">
+        {people.map((person) => (
+          <TinderCard
+            className="swipe"
+            key={person.name}
+            // line below disables swip up and down. Might have to delete later
+            preventSwipe={["down"]}
+          >
+            <div
+              style={{ backgroundImage: `url(${person.url})` }}
+              className="card"
+            >
+              <h3>{person.name}</h3>
             </div>
-            <SwipeButtons/>
-        </div>
-    );
+          </TinderCard>
+        ))}
+      </div>
+      <SwipeButtons />
+    </div>
+  );
 }
 
-export default TinderCards
+export default TinderCards;
