@@ -12,31 +12,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 function ChatScreen() {
     const [input, setInput] = useState('');
 
-    const [messages, setMessages] = useState([]);
-    useEffect(
-        () => 
+    const [messages, setMessages] = useState([ () => 
         onSnapshot(doc(db, "messages", "name"), (snapshot) =>
         setMessages(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
-        ),
-        []
-    );
-
-    // const [messages, setMessages] = useState([
-    //     {
-    //         name: 'Sabrina',
-    //         image: 'https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg',
-    //         message: 'whats up 😁'
-    //     }, {
-    //         name: 'Sabrina',
-    //         image: 'https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg',
-    //         message: 'heyyy'
-    //     }, {
-
-    //         message: 'whats up Sabrina😍'
-    //     },
-
-    // ]);
-
+        )])
+ 
     const handleSend = e => {
         e.preventDefault();
         setMessages([...messages, { message: input }]);
@@ -68,11 +48,11 @@ function ChatScreen() {
             alt={message.name}
             src={message.image}
             />
-            <p className="chatScreen_text"  key={message.id}>{message.message}</p>
-        </div>
+            <p className="chatScreen_text">{message.message}</p>
+            </div>
         ) : (
         <div className='chatScreen_message'>
-            <p className='chatScreen_textUser'>{message.message}</p>
+            <p className='chatScreen_textUser'>is this working</p>
         </div>
         )
     )
