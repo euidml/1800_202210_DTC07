@@ -7,7 +7,7 @@
 }
 
 .upper{
-    height: 100px;
+    height: 90px;
     width: 100vw;
     background: linear-gradient(to left,#9acd32, blue);
 }
@@ -26,12 +26,12 @@
 }
 
 .lower{
-    height: 100px;
-    width: 100vw;
+    margin-top: 10px;
+    height: 65px;
+    width: 100wh;
     background: white;
-    text-align: right;
-    padding-right: 95px;
-    padding-top: 10px;
+    text-align: left;
+    padding-left: 125px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -47,10 +47,24 @@
 .Setting_title {
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: slateblue;
+    color: royalblue;
 }
 
 .Setting_text {
-    color: slateblue;
+    color: royalblue;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.Setting_input{
+    margin: 0px 0px 0px 0px;
+    padding-left: 0px;
+    width: 80vw;
+    padding-left: 25px;
+
+}
+
+.Setting_upload {
+    margin: 7px 0px 0px 0px;
+
+
 }
