@@ -1,0 +1,31 @@
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: #29b3cd;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.img_container {
+    width: 90%;
+    margin: 0 auto;
+    /* overflow: hidden; */
+}
+
+.img_container img {
+    width: 100%;
+}
+
+
+img {
+    border-radius: 18px;
+}
+
+.images {
+    /* margin-left: 20%; */
+    float: left;
+    width: 33.3%;
+    padding: 10px;
+    
+}
