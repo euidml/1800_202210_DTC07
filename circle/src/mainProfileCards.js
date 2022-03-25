@@ -14,20 +14,6 @@ function TinderCards() {
       const q = query(userInfo, where("profilePhoto.availability", "==", true));
       const doc = await getDocs(q);
       const data = doc.docs;
-      console.log(doc.docs, doc.docs.length);
-      // for (let i = 0; i < doc.docs.length; i++) {
-      //   const person = doc.docs[i].data();
-      //   console.log(person);
-      //   setPeople(
-      //     (prev) => [
-      //       ...prev,
-      //       {
-      //         name: person.name.split(" ")[0],
-      //         url: person.profilePhoto.photo
-      //       }
-      //     ]
-      //   );
-      // }
       data.map((person)=>{
         setPeople(
           (prev) => [
