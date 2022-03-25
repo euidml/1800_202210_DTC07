@@ -81,6 +81,7 @@ const logout = () => {
 export {
     auth,
     db,
+    app,
     logInWithEmailAndPassword,
     signInWithEmailAndPassword,
     registerWithEmailAndPassword,

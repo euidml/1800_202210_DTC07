@@ -8,6 +8,10 @@ import SettingProfileCard from "./SettingProfileCard"
 import { Button } from '@material-ui/core';
 import { Link as RouterDomLink } from "react-router-dom";
 import LogOutPopout from './LogOutPopout';
+import MyAccountPopout from './MyAccountPopout';
+import Acknowledgment from './Acknowledgementpop';
+import Support from './SupportPopup';
+import Version from './AppInfoPopout';
 import { logout } from "./firebase";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -30,10 +34,10 @@ export default function Settingpage() {
         <span >USER SETTINGS</span>
         </Grid>
         <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start", fontFamily: 'Verdana'}} component={RouterDomLink} to="/dashboard/profile"><span>My Account</span></Button>
+        <MyAccountPopout/>
         </Grid>
         <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start", fontFamily: 'Verdana'}}><span>About Me</span></Button>
+        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}} component={RouterDomLink} to="/dashboard/profile"><span>About Me</span></Button>
         </Grid>
 
         <Grid item xs={12}>
@@ -41,17 +45,17 @@ export default function Settingpage() {
         </Grid>
 
         <Grid item xs={12}>
-        <span>APP INFORMATION</span>
+        <span>GENERAL INFORMATION</span>
         </Grid>
 
         <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}}><span>Support</span></Button>
+        <Support/>
         </Grid>
         <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}}><span>Updates</span></Button>
+        <Version/>
         </Grid>
         <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}}><span>Acknowledgment</span></Button>
+        <Acknowledgment/>
         </Grid>
 
         
