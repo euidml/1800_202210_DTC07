@@ -17,9 +17,10 @@ import {
 } from "react-router-dom";
 
 function App() {
+  const pathname = useLocation().pathname
   return (
     <div className="app">
-      {useLocation().pathname.includes("/dashboard")&&<Header />}
+      {pathname.includes("/dashboard")&&<Header />}
       <Routes>
         {console.log(useLocation())}
         <Route exact path="/" element={<Login />} />
@@ -28,11 +29,10 @@ function App() {
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/dashboard/chats" element={<Chats  />} />
         <Route exact path="/chat/:person" element={<ChatScreen />} />
-        <Route exact path="/dashboard/profile" element={<ProfilePage />} />
+        {/* <Route exact path="/dashboard/profile" element={<ProfilePage />} /> */}
         <Route exact path="/bottom/settingpage" element={<Settingpage />} />
       </Routes>
-      {useLocation().pathname.includes("/dashboard")&&<Footer />}
-      {useLocation().pathname.includes("/bottom")&&<Footer />}
+      {(pathname.includes("/dashboard") || pathname.includes("/bottom"))&& <Footer />}
     </div>
   );
 }
