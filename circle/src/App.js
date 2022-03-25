@@ -35,8 +35,7 @@ function App() {
         <Route exact path="favorite" element={<Favorite />} />
 
       </Routes>
-      {(pathname.includes("/dashboard") || pathname.includes("/bottom"))&& <Footer />}
-      {(pathname.includes("/favorite") || pathname.includes("/bottom"))&& <Footer />}
+      {(pathname.includes("/favorite") || pathname.includes("/dashboard") || pathname.includes("/bottom"))&& <Footer />}
 
     </div>
   );
