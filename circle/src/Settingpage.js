@@ -12,6 +12,11 @@ import MyAccountPopout from './MyAccountPopout';
 import Acknowledgment from './Acknowledgementpop';
 import Support from './SupportPopup';
 import Version from './AppInfoPopout';
+import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
+import CreateRoundedIcon from '@mui/icons-material/CreateRounded';
+import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
+import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
+import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import { logout } from "./firebase";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -31,13 +36,19 @@ export default function Settingpage() {
 
       <Grid container spacing={2}>
       <Grid item xs={12}>
-        <span >USER SETTINGS</span>
+        <span className='Setting_title'>USER SETTINGS</span>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={1}>
+        <AccountBoxRoundedIcon fontSize='Large' color='primary'/>
+        </Grid>
+        <Grid item xs={11}>
         <MyAccountPopout/>
         </Grid>
-        <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}} component={RouterDomLink} to="/dashboard/profile"><span>About Me</span></Button>
+        <Grid item xs={1}>
+        <CreateRoundedIcon fontSize='Large' color='primary'/>
+        </Grid>
+        <Grid item xs={11}>
+        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}} component={RouterDomLink} to="/dashboard/profile"><span className='Setting_text'>About Me</span></Button>
         </Grid>
 
         <Grid item xs={12}>
@@ -45,16 +56,28 @@ export default function Settingpage() {
         </Grid>
 
         <Grid item xs={12}>
-        <span>GENERAL INFORMATION</span>
+        <span className='Setting_title'>GENERAL INFORMATION</span>
         </Grid>
 
-        <Grid item xs={12}>
+
+        <Grid item xs={1}>
+        <HelpRoundedIcon fontSize='Large' color='primary'/>
+        </Grid>
+        <Grid item xs={11}>
         <Support/>
         </Grid>
-        <Grid item xs={12}>
+
+        <Grid item xs={1}>
+        <InfoRoundedIcon fontSize='Large' color='primary'/>
+        </Grid>
+        <Grid item xs={11}>
         <Version/>
         </Grid>
-        <Grid item xs={12}>
+
+        <Grid item xs={1}>
+        <GroupsRoundedIcon fontSize='Large' color='primary'/>
+        </Grid>
+        <Grid item xs={11}>
         <Acknowledgment/>
         </Grid>
 

@@ -43,3 +43,14 @@
 .Button {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.Setting_title {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: slateblue;
+}
+
+.Setting_text {
+    color: slateblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

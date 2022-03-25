@@ -19,7 +19,7 @@ export default function Support() {
 
   return (
     <div>
-      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> Support</Button>
+      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> <span className='Setting_text'>Support</span></Button>
       <Dialog
         open={open}
         onClose={handleClose}

@@ -19,7 +19,7 @@ export default function Version() {
 
   return (
     <div>
-      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> App Information</Button>
+      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> <span className='Setting_text'>App Information</span></Button>
       <Dialog
         open={open}
         onClose={handleClose}

@@ -26,7 +26,7 @@ export default function MyAccountPopout() {
 
   return (
     <div>
-      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> My Account</Button>
+      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> <span className='Setting_text'>My Account</span></Button>
       <Dialog
         open={open}
         onClose={handleClose}

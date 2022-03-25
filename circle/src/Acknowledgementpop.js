@@ -19,7 +19,7 @@ export default function Acknowledgment() {
 
   return (
     <div>
-      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> Acknowledgment</Button>
+      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}><span className='Setting_text'>Acknowledgment</span></Button>
       <Dialog
         open={open}
         onClose={handleClose}
