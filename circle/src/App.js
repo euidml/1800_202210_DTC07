@@ -32,10 +32,12 @@ function App() {
         <Route exact path="/chat/:person" element={<ChatScreen />} />
         {/* <Route exact path="/dashboard/profile" element={<ProfilePage />} /> */}
         <Route exact path="/bottom/settingpage" element={<Settingpage />} />
-        <Route exact path="/favorite" element={<Favorite />} />
+        <Route exact path="favorite" element={<Favorite />} />
 
       </Routes>
       {(pathname.includes("/dashboard") || pathname.includes("/bottom"))&& <Footer />}
+      {(pathname.includes("/favorite") || pathname.includes("/bottom"))&& <Footer />}
+
     </div>
   );
 }
