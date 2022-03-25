@@ -30,7 +30,7 @@ function App() {
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/dashboard/chats" element={<Chats  />} />
         <Route exact path="/chat/:person" element={<ChatScreen />} />
-        {/* <Route exact path="/dashboard/profile" element={<ProfilePage />} /> */}
+        <Route exact path="/dashboard/profile" element={<ProfilePage />} />
         <Route exact path="/bottom/settingpage" element={<Settingpage />} />
         <Route exact path="favorite" element={<Favorite />} />
 
