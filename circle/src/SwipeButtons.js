@@ -11,9 +11,6 @@ function SwipeButtons() {
             <IconButton className='swipe_left'>
             <CloseRoundedIcon fontSize='large'/>
             </IconButton>
-            <IconButton className='swipe_up'>
-            <FavoriteRoundedIcon fontSize='large'/>
-            </IconButton>
             <IconButton className='swipe_right' >
             <CheckRoundedIcon fontSize='large'/>
             </IconButton>
