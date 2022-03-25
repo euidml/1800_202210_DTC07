@@ -27,13 +27,13 @@ export default function Settingpage() {
 
       <Grid container spacing={2}>
       <Grid item xs={12}>
-        <span>USER SETTINGS</span>
+        <span >USER SETTINGS</span>
         </Grid>
         <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}} component={RouterDomLink} to="/dashboard/profile">My Account</Button>
+        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start", fontFamily: 'Verdana'}} component={RouterDomLink} to="/dashboard/profile"><span>My Account</span></Button>
         </Grid>
         <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}}>About Me</Button>
+        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start", fontFamily: 'Verdana'}}><span>About Me</span></Button>
         </Grid>
 
         <Grid item xs={12}>
@@ -45,13 +45,13 @@ export default function Settingpage() {
         </Grid>
 
         <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}}>Support</Button>
+        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}}><span>Support</span></Button>
         </Grid>
         <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}}>Updates</Button>
+        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}}><span>Updates</span></Button>
         </Grid>
         <Grid item xs={12}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}}>Acknowledgment</Button>
+        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}}><span>Acknowledgment</span></Button>
         </Grid>
 
         

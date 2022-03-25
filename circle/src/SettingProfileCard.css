@@ -8,6 +8,7 @@
 
 .upper{
     height: 100px;
+    width: 100vw;
     background: linear-gradient(to left,#9acd32, blue);
 }
 
@@ -25,7 +26,8 @@
 }
 
 .lower{
-    height: 300px;
+    height: 100px;
+    width: 100vw;
     background: white;
     text-align: right;
     padding-right: 95px;
