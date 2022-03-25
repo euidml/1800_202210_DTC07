@@ -7,6 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 // import { logout } from "./firebase"; <= If used for logout button, it creates a buggy process
 import { Link as RouterDomLink } from "react-router-dom";
+import {logout} from "./firebase"
 
 export default function LogOutPopout() {
   const [open, setOpen] = React.useState(false);
@@ -40,7 +41,7 @@ export default function LogOutPopout() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>No</Button>
-          <Button component={RouterDomLink} to="/" >Yes</Button>
+          <Button onClick={logout} component={RouterDomLink} to="/" >Yes</Button>
         </DialogActions>
       </Dialog>
     </div>
