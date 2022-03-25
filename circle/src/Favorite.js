@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Favorite() {
     return (
         <div>
-        <Link to="/dashboard/chats">
+        <Link to="/dashboard">
         <IconButton>
         <ArrowBackIosNewIcon className='backarrow' fontSize='large' />
         </IconButton>
