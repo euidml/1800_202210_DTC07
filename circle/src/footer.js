@@ -40,7 +40,7 @@ const useStyles = makeStyles({
           icon-color={"#0000"}
           >
           <BottomNavigationAction component={RouterDomLink} to='/dashboard' icon={<HomeRoundedIcon/>}/>
-          <BottomNavigationAction icon={<FavoriteRoundedIcon />}/>
+          <BottomNavigationAction component={RouterDomLink} to='/favorite' icon={<FavoriteRoundedIcon />}/>
           <BottomNavigationAction component={RouterDomLink} to='/dashboard/chats' icon={<ForumRoundedIcon />}/>
           <BottomNavigationAction component={RouterDomLink} to="/bottom/settingpage" icon={<SettingsRoundedIcon />}/>
         </BottomNavigation>
