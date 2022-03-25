@@ -1,30 +1,80 @@
-import React, { useState } from 'react'
-import "./SettingProfileCard.css"
-import { useAuth } from "./firebase"
+import React, { useState } from "react";
+import "./SettingProfileCard.css";
+import { auth, useAuth, db } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { doc, updateDoc } from "firebase/firestore";
 
 function SettingProfileCard() {
+  const [user] = useAuthState(auth);
+  const [picture, setPicture] = useState();
+  // Create a root references
 
-    const currentUser = useAuth();
+  // Create a reference to 'images/mountains.jpg'
 
-    const [name, setName] = useState('Your Name');
+  const handleSubmit = (e) => {
+    const storage = getStorage();
+    const userProfileImageRef = ref(storage, user.uid + picture.name);
+    console.log(userProfileImageRef);
+    uploadBytes(userProfileImageRef, picture).then((snapshot) => {
+      console.log("Uploaded a blob or file!");
+    });
+    getDownloadURL(userProfileImageRef).then((url) => {
+      console.log(url);
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = "blob";
+      xhr.onload = (event) => {
+        const blob = xhr.response;
+      };
+      xhr.open("GET", url);
+      xhr.send();
+      const currentUserInfo = doc(db, "UserInfo", user.uid);
+      console.log(url)
+      updateDoc(currentUserInfo, {
+        profilePhoto: {
+          availability: true,
+          photo: url
+        }
+      });
+    });
+  };
+  //   // While the file names are the same, the references point to different files
+  //   mountainsRef.name === userProfileImageRef.name; // true
+  //   mountainsRef.fullPath === userProfileImageRef.fullPath; // false
 
-    console.log(currentUser)
-    return (
-
-        <div className='Card'>
-            <div className='upper'>
-                <div className='image'>
-                    <img className="profile_img" src="https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png" alt='' height="100px" width="100px" />
-                </div>
-            </div>
-            <div className="lower">
-                <h3>Your name</h3>
-            </div>
-            <input type={'file'} className="Setting_input"></input>
-                <button className="Setting_upload">Upload</button>
-
+  return (
+    <div className="Card">
+      <div className="upper">
+        <div className="image">
+          <img
+            className="profile_img"
+            src="https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png"
+            alt=""
+            height="100px"
+            width="100px"
+          />
         </div>
-    )
+      </div>
+      <div className="lower">
+        <h3>Your name</h3>
+      </div>
+      <input
+        type={"file"}
+        className="Setting_input"
+        // onChange={(e) => {
+        //   setPicture([...picture, e.target.files[0]]);
+        // }}
+        onChange={(e) => {
+          setPicture(e.target.files[0]);
+          console.log(e.target.files);
+          console.log(picture);
+        }}
+      ></input>
+      <button className="Setting_upload" onClick={handleSubmit}>
+        Upload
+      </button>
+    </div>
+  );
 }
 
-export default SettingProfileCard
+export default SettingProfileCard;
