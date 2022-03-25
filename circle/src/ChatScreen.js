@@ -7,7 +7,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
+import sabrina from "./sabrina.jpg";
 
 function ChatScreen() {
     const [input, setInput] = useState('');
@@ -31,6 +31,13 @@ function ChatScreen() {
         <ArrowBackIosNewIcon className='arrow_icon' fontSize='large' />
         </IconButton>
         </Link>
+
+       <Avatar
+        
+            className="#"
+            src={sabrina}
+            alt="sabrina" 
+        />
 
         <Link to="/favorite">
         <IconButton>
