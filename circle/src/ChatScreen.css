@@ -51,6 +51,16 @@
     font-size: larger;
 }
 
-.backarrow {
-    padding-top: 8px;
+.twoicons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+}
+
+.arrow_icon {
+    color: #f5b748;
+}
+
+.fav_icon{
+    color: #29b3cd;
 }

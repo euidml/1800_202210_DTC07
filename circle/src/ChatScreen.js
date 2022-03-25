@@ -6,6 +6,7 @@ import { doc, onSnapshot } from 'firebase/firestore';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 function ChatScreen() {
@@ -40,12 +41,19 @@ function ChatScreen() {
 
     return (
     <div className='chatScreen'>
-
+        <div className='twoicons'>
         <Link to="/dashboard/chats">
         <IconButton>
-        <ArrowBackIosNewIcon className='backarrow' fontSize='large' />
+        <ArrowBackIosNewIcon className='arrow_icon' fontSize='large' />
         </IconButton>
         </Link>
+
+        <Link to="/favorite">
+        <IconButton>
+        <FavoriteIcon className='fav_icon' fontSize='large' />
+        </IconButton>
+        </Link>
+        </div>
 
         <p className='chatScreen_timestamp'>YOU MATCHED WITH SABRINA ON 10/09/20</p>
         {messages.map(message => (

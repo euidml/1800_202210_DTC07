@@ -18,7 +18,7 @@ function Favorite() {
         <h2 className='fav'>💛 You favorited 3 people</h2>
         <div className='img_container'>
             <div className='images'>
-                <img src='https://i.pinimg.com/736x/bc/84/80/bc8480ce0718c4d84576606c64d73da6--twilight-saga-new-moon-twilight-movie.jpg' alt='ed'></img>
+                <img src='https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg' alt='ed'></img>
             </div>
 
             <div className='images'>
