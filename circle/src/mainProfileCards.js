@@ -25,7 +25,6 @@ function TinderCards() {
           ]
         );
       });
-      console.log(people)
     } catch (err) {
       console.log(err);
     }
@@ -42,6 +41,7 @@ function TinderCards() {
             key={person.name}
             // line below disables swip up and down. Might have to delete later
             preventSwipe={["down"]}
+            flickOnSwipe={[false]}
           >
             <div
               style={{ backgroundImage: `url(${person.url})` }}
