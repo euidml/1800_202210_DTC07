@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Avatar } from '@material-ui/core';
 import './ChatScreen.css';
 import { db } from './firebase';
@@ -12,26 +12,30 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 function ChatScreen() {
     const [input, setInput] = useState('');
 
-    // const [messages, setMessages] = onSnapshot(doc(db, "messages", "message"), (messageDoc) => {
-    //     console.log("messages", messageDoc.data());
-    // })
+    const [messages, setMessages] = useState([]);
+    useEffect(
+        () => 
+        onSnapshot(doc(db, "messages", "name"), (snapshot) =>
+        setMessages(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
+        ),
+        []
+    );
 
+    // const [messages, setMessages] = useState([
+    //     {
+    //         name: 'Sabrina',
+    //         image: 'https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg',
+    //         message: 'whats up 😁'
+    //     }, {
+    //         name: 'Sabrina',
+    //         image: 'https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg',
+    //         message: 'heyyy'
+    //     }, {
 
-    const [messages, setMessages] = useState([
-        {
-            name: 'Sabrina',
-            image: 'https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg',
-            message: 'whats up 😁'
-        }, {
-            name: 'Sabrina',
-            image: 'https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg',
-            message: 'heyyy'
-        }, {
+    //         message: 'whats up Sabrina😍'
+    //     },
 
-            message: 'whats up Sabrina😍'
-        },
-
-    ]);
+    // ]);
 
     const handleSend = e => {
         e.preventDefault();
@@ -64,7 +68,7 @@ function ChatScreen() {
             alt={message.name}
             src={message.image}
             />
-            <p className="chatScreen_text">{message.message}</p>
+            <p className="chatScreen_text"  key={message.id}>{message.message}</p>
         </div>
         ) : (
         <div className='chatScreen_message'>
