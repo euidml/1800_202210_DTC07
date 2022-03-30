@@ -5,11 +5,34 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { auth, db } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { query, collection, getDoc, where, doc } from "firebase/firestore";
 // import {app} from "./firebase"
 
-export default function MyAccountPopout() {
-  const [open, setOpen] = React.useState(false);
+function MyAccountPopout() {
+  // initiated data we're gonna use with useState()
+  const [name, userName] = useState("")
+  const [email, userEmail] = useState("")
+  // fetch user's auth
+  const [user] = useAuthState(auth);
+  const [open, setOpen] = useState(false);
+  // q is query
+  const q = doc(db, "UserInfo", user?.uid)
+  // async means the function is gonna wait until they get proper data, while other functions executed
+  const fetchUserInfo = async () => {
+    try {
+      const doc = await getDoc(q);
+      const UserInfo = doc.data();
+      // assign each data into proper var
+      userName(UserInfo.name);
+      userEmail(UserInfo.email);
 
+    } catch (err) {
+      console.error(err);
+      // alert("An error occured while fetching user data");
+    }
+  };
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -20,9 +43,10 @@ export default function MyAccountPopout() {
 
 //   const [currentUser, setCurrentUser] = useState()
 
-//   useEffect(() => {
-//     app.auth().onAuthStateChanged((user) => {setCurrentUser(user)})
-//   }, [])
+  useEffect(() => {
+    fetchUserInfo();
+    // app.auth().onAuthStateChanged((user) => {setCurrentUser(user)})
+  }, [])
 
   return (
     <div>
@@ -39,7 +63,8 @@ export default function MyAccountPopout() {
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {/* {currentUser && <p>{currentUser.displayName}</p>} */}
+          <p>{name}</p>
+          <p>{email}</p>
           </DialogContentText>
         </DialogContent>
 
@@ -50,3 +75,4 @@ export default function MyAccountPopout() {
     </div>
   );
 }
+export default MyAccountPopout
