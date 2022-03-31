@@ -7,6 +7,13 @@ import IconButton from "@material-ui/core/IconButton"
 import Drawer from '@material-ui/core/Drawer'
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
+import SportsHockeyRoundedIcon from '@mui/icons-material/SportsHockeyRounded';
+import IceSkatingRoundedIcon from '@mui/icons-material/IceSkatingRounded';
+import DownhillSkiingRoundedIcon from '@mui/icons-material/DownhillSkiingRounded';
+import SnowboardingRoundedIcon from '@mui/icons-material/SnowboardingRounded';
+import  Snackbar  from '@material-ui/core/Snackbar';
+import CloseIcon from "@material-ui/icons/Close";
+
 
 function SwipeButtons() {
 
@@ -16,10 +23,23 @@ function SwipeButtons() {
     }
 
     const list = () => (
-        <div onClick={toggleDrawer(false)}>
+        <div>
             <List>
-                <ListItem>
-                    <p>It works, hell yeah!</p>
+                <ListItem className='title_list' >
+                    <p><span >Sport filter</span></p>
+                </ListItem>
+                <ListItem onClick={toggleDrawer(false)}>
+                    <SportsHockeyRoundedIcon className='list_item' fontSize='large' />
+
+                </ListItem >
+                <ListItem button={true} onClick={toggleDrawer(false)}>
+                    <IceSkatingRoundedIcon className='list_item' fontSize='large'/>
+                </ListItem>
+                <ListItem button={true} onClick={toggleDrawer(false)}>
+                    <DownhillSkiingRoundedIcon  className='list_item' fontSize='large'/>
+                </ListItem>
+                <ListItem button={true} onClick={toggleDrawer(false)}>
+                    <SnowboardingRoundedIcon className='list_item' fontSize='large'/>
                 </ListItem>
             </List>
         </div>
@@ -34,7 +54,7 @@ function SwipeButtons() {
 
             <IconButton className='filter'>
                 <FilterAltRoundedIcon fontSize='large' onClick={toggleDrawer(true)} />
-                <Drawer anchor={"top"} open={state} onClose={toggleDrawer(false)}
+                <Drawer anchor={"right"} open={state} onClose={toggleDrawer(false)}
                 >
 
                     {list()}

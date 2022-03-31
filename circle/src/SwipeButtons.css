@@ -21,3 +21,15 @@
     padding: 3vw !important;
     color: #76e2b3 !important;
 }
+
+.list_item {
+    margin-bottom: 25px;
+    margin-left: 20px;
+
+}
+
+.title_list {
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
