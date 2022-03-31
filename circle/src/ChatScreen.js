@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Avatar } from '@material-ui/core';
 import './ChatScreen.css';
-import { db } from './firebase';
+import { db, auth } from './firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Link } from "react-router-dom";
@@ -19,12 +19,16 @@ function ChatScreen() {
     }, [])
     return (
         <div>
-            {messages.map(({id, text, photoURL}) => (
-               <div key={id}>
-                   <img src={photoURL} alt='' />
-                   <p>{text}</p>
-               </div>
-            ))}
+            <div className='msgs'>
+                {messages.map(({id, text, photoURL, uid}) => (
+                <div>
+                    <div key={id} className={`msg ${uid === auth.currentUser ? 'sent' : 'received'}`}>
+                    <img src={photoURL} alt='' />
+                    <p>{text}</p>
+                    </div>
+                </div>
+                ))}
+            </div>
             <SendMessage />
         </div>
     )
