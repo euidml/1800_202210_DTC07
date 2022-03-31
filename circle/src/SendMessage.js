@@ -1,10 +1,11 @@
 import React, { useState} from 'react'
 import { db, auth } from './firebase'
 import {Input, Button} from '@material-ui/core'
-import firebase from 'firebase'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
-
-function SendMessage() {
+function SendMessage({scroll}) {
     const [msg, setMsg] = useState('')
   
     async function sendMessage(e){
@@ -17,6 +18,7 @@ function SendMessage() {
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         })
         setMsg('')
+        scroll.current.scrollIntoView({behavior: 'smooth'})
     }
     return (
     <div>

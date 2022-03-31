@@ -10,6 +10,7 @@ import ChatScreen from "./ChatScreen";
 import ProfilePage from "./Profilepage"
 import Favorite from "./Favorite";
 import Footer from "./footer";
+import SendMessage from "./SendMessage";
 import Settingpage from "./Settingpage";
 import {
   Route,
@@ -33,6 +34,8 @@ function App() {
         <Route exact path="/dashboard/profile" element={<ProfilePage />} />
         <Route exact path="/bottom/settingpage" element={<Settingpage />} />
         <Route exact path="favorite" element={<Favorite />} />
+        <Route exact path="sendmessage" element={<SendMessage />} />
+
 
       </Routes>
       {(pathname.includes("/favorite") || pathname.includes("/dashboard") || pathname.includes("/bottom"))&& <Footer />}
