@@ -1,6 +1,6 @@
 .Card{
     width: 390px;
-    height: 200px;
+    height: 170px;
     background: white;
     border-radius: 10px;
     box-shadow: 0px, 1px, 10px, 1px black;
@@ -26,7 +26,7 @@
 }
 
 .lower{
-    margin-top: 10px;
+    margin-top: 35px;
     height: 65px;
     width: 100wh;
     background: white;
@@ -64,7 +64,39 @@
 }
 
 .Setting_upload {
-    margin: 7px 0px 0px 0px;
-
-
+    margin: 0px 35px 0px 0px;
+    float: right;
+    padding: 5px;
+    color: royalblue;
+    background-color: lightblue;
+    outline: 0;
+    
 }
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    margin: 0px 0px 0px 50px;
+    color: royalblue;
+    background-color: lightblue;
+    padding: 5px;
+    position: absolute;
+    outline: 1.5px solid black;
+  }
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    /* background: white; */
+    cursor: inherit;
+    display: block;
+  }
+
+  

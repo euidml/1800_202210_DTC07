@@ -20,6 +20,7 @@ where,
  onSnapshot,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import {getStorage, ref, uploadBytes} from "firebase/storage"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -37,6 +38,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage();
 
 
 
@@ -99,4 +101,16 @@ export function useAuth() {
   }, [])
 
   return currentUser;
+}
+
+// Storage
+export async function upload(file, currentUser, setLoading) {
+  const fileRef = ref(storage, currentUser.uid + '.png')
+
+  setLoading(true);
+
+  const snapshot = await uploadBytes(fileRef, file);
+
+  setLoading(false);
+  alert("Uploaded file!")
 }
