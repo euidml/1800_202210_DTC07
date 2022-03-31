@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import sabrina from "./sabrina.jpg";
+import SendMessage from './SendMessage';
 
 function ChatScreen() {
     const [messages, setMessages] = useState([])
@@ -22,9 +23,9 @@ function ChatScreen() {
                <div key={id}>
                    <img src={photoURL} alt='' />
                    <p>{text}</p>
-
                </div>
             ))}
+            <SendMessage />
         </div>
     )
 }
