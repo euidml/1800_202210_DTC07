@@ -2,12 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Avatar } from '@material-ui/core';
 import './ChatScreen.css';
 import { db } from './firebase';
-import { doc, onSnapshot, Timestamp, addDoc, collection} from 'firebase/firestore';
+import { doc, onSnapshot, Timestamp, addDoc, query, collection} from 'firebase/firestore';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import sabrina from "./sabrina.jpg";
+import useId from '@mui/material/utils/useId';
 
 
 function ChatScreen() {
@@ -17,12 +18,26 @@ function ChatScreen() {
         onSnapshot(doc(db, "messages", "text"), (snapshot) =>
         setMessages(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
         )])
+    
+    useEffect(() => {
+        const q = query(collection(db, "messages"))
+        onSnapshot(q, (querySnapshot) => {
+            const messages =[]
+            querySnapshot.forEach((doc) => {
+                messages.push({id: doc.id, data: doc.data() })
+            })
+
+            setMessages(messages)
+        });
+        }, [])
  
+     
     const handleSend = async e => {
         e.preventDefault();
 
         await addDoc(collection(db, "messages"), {
             msg: input,
+            name: 'run',
             createdAt: Timestamp.fromDate(new Date())
         })
         setMessages([...messages, { message: input }]);
@@ -65,7 +80,7 @@ function ChatScreen() {
             </div>
         ) : (
         <div className='chatScreen_message'>
-            <p className='chatScreen_textUser'>is this working</p>
+            <p className='chatScreen_textUser'>{input}</p>
         </div>
         )
     )
