@@ -9,7 +9,7 @@
 .upper{
     height: 90px;
     width: 100vw;
-    background: linear-gradient(to left,#9acd32, blue);
+    background: linear-gradient(to left,#9acd32, #1E90FF);
 }
 
 .image img{

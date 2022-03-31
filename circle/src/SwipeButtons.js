@@ -11,8 +11,6 @@ import SportsHockeyRoundedIcon from '@mui/icons-material/SportsHockeyRounded';
 import IceSkatingRoundedIcon from '@mui/icons-material/IceSkatingRounded';
 import DownhillSkiingRoundedIcon from '@mui/icons-material/DownhillSkiingRounded';
 import SnowboardingRoundedIcon from '@mui/icons-material/SnowboardingRounded';
-import  Snackbar  from '@material-ui/core/Snackbar';
-import CloseIcon from "@material-ui/icons/Close";
 
 
 function SwipeButtons() {
