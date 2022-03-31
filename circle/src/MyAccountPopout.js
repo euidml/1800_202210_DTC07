@@ -63,8 +63,8 @@ function MyAccountPopout() {
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          <p>{name}</p>
-          <p>{email}</p>
+          <p style={{marginBottom: "8px"}}><span style={{fontWeight: "bold"}}>Name:</span> {name}</p>
+          <p><span style={{fontWeight: "bold"}}>Email:</span> {email}</p>
           </DialogContentText>
         </DialogContent>
 

@@ -43,7 +43,7 @@ const Profileform = () => {
     <form className="form" onSubmit={handleSubmit}>
       <h1> Profile Information </h1>
 
-      <label> Name </label>
+      <label> Full Name </label>
       <input
         id="nameInput"
         placeholder="Name"
