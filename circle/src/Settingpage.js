@@ -31,7 +31,6 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export default function Settingpage() {
-  const currentUser = useAuth();
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
   const [photoURL, setPhotoURL] = useState("https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png")
@@ -43,91 +42,94 @@ export default function Settingpage() {
   }
 
   function handleClick() {
-    upload(photo, );
+    upload(photo,);
   }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <SettingProfileCard/>
+      <SettingProfileCard />
       <Box padding={2}>
-        
 
-      <Grid container spacing={2}>
-      <Grid item xs={6}>
-      <span class="btn btn-primary btn-file"> Find image
-      <input
-        type={"file"}
-        className="Setting_input"
-        onChange={handleChange}
-        // onChange={(e) => {
-        //   setPicture([...picture, e.target.files[0]]);
-        // }}
-        // onChange={(e) => {
-        //   setPicture(e.target.files[0]);
-        // }}
-        >
-        </input>
-        </span>
-      </Grid>
-      <Grid item xs={6}>
-      <button className="Setting_upload" onClick={handleClick} disabled={loading || !photo} >
-        Upload
-      </button>
-      </Grid>
-      <Grid item xs={12}>
-        <span className='Setting_title'>USER SETTINGS</span>
-        </Grid>
-        <Grid item xs={1}>
-        <AccountBoxRoundedIcon fontSize='Large' color='primary'/>
-        </Grid>
-        <Grid item xs={11}>
-        <MyAccountPopout/>
-        </Grid>
-        <Grid item xs={1}>
-        <CreateRoundedIcon fontSize='Large' color='primary'/>
-        </Grid>
-        <Grid item xs={11}>
-        <Button variant="text" fullWidth={true} style={{justifyContent: "flex-start"}} component={RouterDomLink} to="/dashboard/profile"><span className='Setting_text'>About Me</span></Button>
-        </Grid>
 
+        <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Divider/>
+          <span className='Setting_title'>AVATAR UPLOAD PHOTO </span>
         </Grid>
+          <Grid item xs={6}>
+            <span class="btn btn-primary btn-file"> <span >Find image</span>
+              <input
+                type={"file"}
+                className="Setting_input"
+                onChange={handleChange}
+              // onChange={(e) => {
+              //   setPicture([...picture, e.target.files[0]]);
+              // }}
+              // onChange={(e) => {
+              //   setPicture(e.target.files[0]);
+              // }}
+              >
+              </input>
+            </span>
+          </Grid>
+          <Grid item xs={6}>
+            <button className="Setting_upload" onClick={handleClick} disabled={loading || !photo} >
+              Upload
+            </button>
+          </Grid>
+          <Grid item xs={12}>
+            <span className='Setting_title'>USER SETTINGS</span>
+          </Grid>
+          <Grid item xs={1}>
+            <AccountBoxRoundedIcon fontSize='Large' color='primary' />
+          </Grid>
+          <Grid item xs={11}>
+            <MyAccountPopout />
+          </Grid>
+          <Grid item xs={1}>
+            <CreateRoundedIcon fontSize='Large' color='primary' />
+          </Grid>
+          <Grid item xs={11}>
+            <Button variant="text" fullWidth={true} style={{ justifyContent: "flex-start" }} component={RouterDomLink} to="/dashboard/profile"><span className='Setting_text'>About Me</span></Button>
+          </Grid>
 
-        <Grid item xs={12}>
-        <span className='Setting_title'>GENERAL INFORMATION</span>
-        </Grid>
+          <Grid item xs={12}>
+            <Divider />
+          </Grid>
+
+          <Grid item xs={12}>
+            <span className='Setting_title'>GENERAL INFORMATION</span>
+          </Grid>
 
 
-        <Grid item xs={1}>
-        <HelpRoundedIcon fontSize='Large' color='primary'/>
-        </Grid>
-        <Grid item xs={11}>
-        <Support/>
-        </Grid>
+          <Grid item xs={1}>
+            <HelpRoundedIcon fontSize='Large' color='primary' />
+          </Grid>
+          <Grid item xs={11}>
+            <Support />
+          </Grid>
 
-        <Grid item xs={1}>
-        <InfoRoundedIcon fontSize='Large' color='primary'/>
-        </Grid>
-        <Grid item xs={11}>
-        <Version/>
-        </Grid>
+          <Grid item xs={1}>
+            <InfoRoundedIcon fontSize='Large' color='primary' />
+          </Grid>
+          <Grid item xs={11}>
+            <Version />
+          </Grid>
 
-        <Grid item xs={1}>
-        <GroupsRoundedIcon fontSize='Large' color='primary'/>
-        </Grid>
-        <Grid item xs={11}>
-        <Acknowledgment/>
-        </Grid>
+          <Grid item xs={1}>
+            <GroupsRoundedIcon fontSize='Large' color='primary' />
+          </Grid>
+          <Grid item xs={11}>
+            <Acknowledgment />
+          </Grid>
 
-        
-        <Grid item xs={12}>
-          <Divider/>
-        </Grid>
 
-        <Grid item xs={12}>
-        <LogOutPopout className="logout"/>
+          <Grid item xs={12}>
+            <Divider />
+          </Grid>
+
+          <Grid item xs={12}>
+            <LogOutPopout className="logout" />
+          </Grid>
         </Grid>
-      </Grid>
       </Box>
     </Box>
   );

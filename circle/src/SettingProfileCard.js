@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./SettingProfileCard.css";
 import { auth, useAuth, db } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -6,6 +6,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 
 function SettingProfileCard() {
+  const [people, setPeople] = useState([]);
   const [name, userName] = useState("")
   const [user] = useAuthState(auth);
   const [picture, setPicture] = useState();
@@ -25,6 +26,8 @@ function SettingProfileCard() {
       // alert("An error occured while fetching user data");
     }
   };
+
+
   // Create a root references
 
   // Create a reference to 'images/mountains.jpg'
@@ -58,7 +61,7 @@ function SettingProfileCard() {
 
   useEffect(() => {
     fetchUserInfo();
-  }, [])
+  }, [user])
   //   // While the file names are the same, the references point to different files
   //   mountainsRef.name === userProfileImageRef.name; // true
   //   mountainsRef.fullPath === userProfileImageRef.fullPath; // false
@@ -69,7 +72,7 @@ function SettingProfileCard() {
         <div className="image">
           <img
             className="profile_img"
-            src="https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png"
+            src={''}
             alt=""
             height="100px"
             width="100px"
@@ -79,23 +82,6 @@ function SettingProfileCard() {
       <div className="lower">
         <h3>{name}</h3>
       </div>
-      <span class="btn btn-primary btn-file"> Find image
-      <input
-        type={"file"}
-        className="Setting_input"
-        // onChange={(e) => {
-        //   setPicture([...picture, e.target.files[0]]);
-        // }}
-        onChange={(e) => {
-          setPicture(e.target.files[0]);
-          console.log(e.target.files);
-          console.log(picture);
-        }}>
-        </input>
-        </span>
-      <button className="Setting_upload" onClick={handleSubmit}>
-        Upload
-      </button>
     </div>
   );
 }
