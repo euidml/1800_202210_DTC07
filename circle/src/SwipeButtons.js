@@ -36,7 +36,7 @@ function SwipeButtons({
       <List>
         <ListItem className="title_list">
           <p>
-            <span>Sport <br/>filter</span>
+            <span>Sport<br/>Filter</span>
           </p>
         </ListItem>
         <Divider/>
