@@ -14,6 +14,7 @@ import SnowboardingRoundedIcon from "@mui/icons-material/SnowboardingRounded";
 
 function SwipeButtons({
   setActiveFilter,
+  swipe
 }) {
   // useEffect(() => {
   //     if (activeFilter === "") {
@@ -59,7 +60,7 @@ function SwipeButtons({
   }, []);
   return (
     <div className="swipeButtons">
-      <IconButton className="swipe_left">
+      <IconButton className="swipe_left" onClick={() => swipe('left')}>
         <CloseRoundedIcon fontSize="large" />
       </IconButton>
 
@@ -70,7 +71,7 @@ function SwipeButtons({
         </Drawer>
       </IconButton>
 
-      <IconButton className="swipe_right">
+      <IconButton className="swipe_right" onClick={() => swipe('right')}>
         <CheckRoundedIcon fontSize="large" />
       </IconButton>
     </div>
