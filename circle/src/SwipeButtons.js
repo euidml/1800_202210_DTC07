@@ -1,19 +1,5 @@
 import React, { useEffect } from "react";
 import "./SwipeButtons.css";
-<<<<<<< HEAD
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-import FilterAltRoundedIcon from '@mui/icons-material/FilterAltRounded';
-import IconButton from "@material-ui/core/IconButton"
-import Drawer from '@material-ui/core/Drawer'
-import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
-import SportsHockeyRoundedIcon from '@mui/icons-material/SportsHockeyRounded';
-import IceSkatingRoundedIcon from '@mui/icons-material/IceSkatingRounded';
-import DownhillSkiingRoundedIcon from '@mui/icons-material/DownhillSkiingRounded';
-import SnowboardingRoundedIcon from '@mui/icons-material/SnowboardingRounded';
-import Divider from '@mui/material/Divider';
-=======
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import FilterAltRoundedIcon from "@mui/icons-material/FilterAltRounded";
@@ -25,7 +11,7 @@ import SportsHockeyRoundedIcon from "@mui/icons-material/SportsHockeyRounded";
 import IceSkatingRoundedIcon from "@mui/icons-material/IceSkatingRounded";
 import DownhillSkiingRoundedIcon from "@mui/icons-material/DownhillSkiingRounded";
 import SnowboardingRoundedIcon from "@mui/icons-material/SnowboardingRounded";
->>>>>>> c05528a031ae3c3847491bed0e19eb8415331208
+import { Divider } from "@mui/material";
 
 function SwipeButtons({
   setActiveFilter,
@@ -49,22 +35,26 @@ function SwipeButtons({
       <List>
         <ListItem className="title_list">
           <p>
-            <span>Sport filter</span>
+            <span>Sport <br/>filter</span>
           </p>
         </ListItem>
+        <Divider/>
       </List>
-      <List className="list_item" fontSize="large">
-        <ListItem button={true} onClick={() => setActiveFilter("Hockey")}>
-          <SportsHockeyRoundedIcon />
+      <List>
+        <ListItem className="list_item" fontSize="large"button={true} onClick={() => setActiveFilter("Hockey")}>
+          <SportsHockeyRoundedIcon fontSize="large"/>
         </ListItem>
-        <ListItem button={true} onClick={() => setActiveFilter("Skating")}>
-          <IceSkatingRoundedIcon />
+        <Divider/>
+        <ListItem className="list_item" button={true} onClick={() => setActiveFilter("Skating")}>
+          <IceSkatingRoundedIcon fontSize="large"/>
         </ListItem>
-        <ListItem button={true} onClick={() => setActiveFilter("Skiing")}>
-          <DownhillSkiingRoundedIcon />
+        <Divider/>
+        <ListItem className="list_item" button={true} onClick={() => setActiveFilter("Skiing")}>
+          <DownhillSkiingRoundedIcon fontSize="large"/>
         </ListItem>
-        <ListItem button={true} onClick={() => setActiveFilter("Snowboarding")}>
-          <SnowboardingRoundedIcon />
+        <Divider/>
+        <ListItem className="list_item" button={true} onClick={() => setActiveFilter("Snowboarding")}>
+          <SnowboardingRoundedIcon fontSize="large" />
         </ListItem>
       </List>
     </div>

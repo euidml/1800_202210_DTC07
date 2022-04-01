@@ -23,14 +23,14 @@
 }
 
 .list_item {
-    margin-bottom: 25px;
-    margin-left: 20px;
+    padding-top: 25px;
+    /* padding-left: 25px; */
     text-align: center;
 
 }
 
 .title_list {
-    /* margin-bottom: 5px; */
+    margin-bottom: 5px;
     text-align: center;
     font-weight: bold;
     font-size: large;
