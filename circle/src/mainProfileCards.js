@@ -68,7 +68,7 @@ function TinderCards() {
   const swiped = (direction, nameToDelete, index) => {
     if(direction==="right"){
       updateDoc(doc(db, "UserInfo", user?.uid),{
-        favouritePeople: arrayUnion(people[index].uid)
+        likedPeople: arrayUnion(people[index].uid)
       }
       )
     }
