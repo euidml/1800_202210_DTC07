@@ -6,6 +6,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 
 function SettingProfileCard() {
+  const [people, setPeople] = useState([]);
   const [name, userName] = useState("")
   const [user] = useAuthState(auth);
   const [picture, setPicture] = useState();
@@ -59,10 +60,6 @@ function SettingProfileCard() {
   };
 
   useEffect(() => {
-    if (user?.photoURL) {
-      setPhotoURL(user.photoURL);
-      fetchUserInfo();
-    }
     fetchUserInfo();
   }, [user])
   //   // While the file names are the same, the references point to different files
@@ -75,7 +72,7 @@ function SettingProfileCard() {
         <div className="image">
           <img
             className="profile_img"
-            src={photoURL}
+            src={''}
             alt=""
             height="100px"
             width="100px"
@@ -85,23 +82,6 @@ function SettingProfileCard() {
       <div className="lower">
         <h3>{name}</h3>
       </div>
-      <span class="btn btn-primary btn-file"> Find image
-      <input
-        type={"file"}
-        className="Setting_input"
-        // onChange={(e) => {
-        //   setPicture([...picture, e.target.files[0]]);
-        // }}
-        onChange={(e) => {
-          setPicture(e.target.files[0]);
-          console.log(e.target.files);
-          console.log(picture);
-        }}>
-        </input>
-        </span>
-      <button className="Setting_upload" onClick={handleSubmit}>
-        Upload
-      </button>
     </div>
   );
 }

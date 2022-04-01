@@ -33,6 +33,9 @@ function TinderCards() {
       console.log(err);
     }
   };
+  useEffect(() => {
+    fetchFilteredProfiles();
+  },[]);
 
   const fetchProfilePhotos = async () => {
     try {
@@ -41,8 +44,7 @@ function TinderCards() {
       const doc = await getDocs(q);
       const data = doc.docs;
       data.map((people)=>{
-        console.log(people.data())
-        if(people.data().personalInfo?.sport == "Hockey"){
+        if(people.data().personalInfo.sport == "Hockey"){
           setPeople(
             (prev) => [
               ...prev,
