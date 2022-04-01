@@ -9,7 +9,7 @@ function SettingProfileCard() {
   const [people, setPeople] = useState([]);
   const [name, userName] = useState("")
   const [user] = useAuthState(auth);
-  const [picture, setPicture] = useState();
+  const [picture, setPicture] = useState("");
   const [profileAvailablity] = useState(true)
   const q = doc(db, "UserInfo", user?.uid)
 
@@ -20,7 +20,7 @@ function SettingProfileCard() {
       const UserInfo = doc.data();
       // assign each data into proper var
       userName(UserInfo.name);
-
+      setPicture(UserInfo.profilePhoto.photo)
     } catch (err) {
       console.error(err);
       // alert("An error occured while fetching user data");
@@ -72,7 +72,7 @@ function SettingProfileCard() {
         <div className="image">
           <img
             className="profile_img"
-            src={"https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png"}
+            src={picture}
             alt=""
             height="100px"
             width="100px"

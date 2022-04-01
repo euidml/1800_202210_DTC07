@@ -64,12 +64,17 @@
 
 }
 
+.Setting_upload_container{
+    padding-top: 20px;
+   padding-bottom: 20px;
+}
+
 .Setting_upload {
-    margin: 0px 35px 0px 0px;
+    width: 20vw;
     float: right;
+    margin: 0px 35px 0px 0px;
     padding: 5px;
     color: royalblue;
-    background-color: lightblue;
     outline: 0;
     
 }
