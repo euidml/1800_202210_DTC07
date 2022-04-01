@@ -8,8 +8,8 @@ import { doc, updateDoc, getDoc } from "firebase/firestore";
 function SettingProfileCard() {
   const [name, userName] = useState("")
   const [user] = useAuthState(auth);
-  const [photoURL, setPhotoURL] = useState("https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png");
-
+  const [picture, setPicture] = useState();
+  const [profileAvailablity] = useState(true)
   const q = doc(db, "UserInfo", user?.uid)
 
 
@@ -31,32 +31,32 @@ function SettingProfileCard() {
 
   // Create a reference to 'images/mountains.jpg'
 
-  // const handleSubmit = (e) => {
-  //   const storage = getStorage();
-  //   const userProfileImageRef = ref(storage, user.uid + picture.name);
-  //   console.log(userProfileImageRef);
-  //   uploadBytes(userProfileImageRef, picture).then((snapshot) => {
-  //     console.log("Uploaded a blob or file!");
-  //   });
-  //   getDownloadURL(userProfileImageRef).then((url) => {
-  //     console.log(url);
-  //     const xhr = new XMLHttpRequest();
-  //     xhr.responseType = "blob";
-  //     xhr.onload = (event) => {
-  //       const blob = xhr.response;
-  //     };
-  //     xhr.open("GET", url);
-  //     xhr.send();
-  //     const currentUserInfo = doc(db, "UserInfo", user.uid);
-  //     console.log(url)
-  //     updateDoc(currentUserInfo, {
-  //       profilePhoto: {
-  //         availability: true,
-  //         photo: url
-  //       }
-  //     });
-  //   });
-  // };
+  const handleSubmit = (e) => {
+    const storage = getStorage();
+    const userProfileImageRef = ref(storage, user.uid + picture.name);
+    console.log(userProfileImageRef);
+    uploadBytes(userProfileImageRef, picture).then((snapshot) => {
+      console.log("Uploaded a blob or file!");
+    });
+    getDownloadURL(userProfileImageRef).then((url) => {
+      console.log(url);
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = "blob";
+      xhr.onload = (event) => {
+        const blob = xhr.response;
+      };
+      xhr.open("GET", url);
+      xhr.send();
+      const currentUserInfo = doc(db, "UserInfo", user.uid);
+      console.log(url)
+      updateDoc(currentUserInfo, {
+        profilePhoto: {
+          availability: profileAvailablity,
+          photo: url
+        }
+      });
+    });
+  };
 
   useEffect(() => {
     if (user?.photoURL) {
@@ -85,7 +85,7 @@ function SettingProfileCard() {
       <div className="lower">
         <h3>{name}</h3>
       </div>
-      {/* <span class="btn btn-primary btn-file"> Find image
+      <span class="btn btn-primary btn-file"> Find image
       <input
         type={"file"}
         className="Setting_input"
@@ -98,10 +98,10 @@ function SettingProfileCard() {
           console.log(picture);
         }}>
         </input>
-        </span> */}
-      {/* <button className="Setting_upload" onClick={handleSubmit}>
+        </span>
+      <button className="Setting_upload" onClick={handleSubmit}>
         Upload
-      </button> */}
+      </button>
     </div>
   );
 }

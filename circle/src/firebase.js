@@ -60,6 +60,17 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       name,
       authProvider: "local",
       email,
+      personalInfo:{
+        age:"",
+        game:"",
+        gender:"",
+        hobbies: "",
+        sport:""
+      },
+      profilePhoto:{
+        availability:false,
+        photo:""
+      }
     })
     console.log(doc(db, "UserInfo"))
   } catch (err) {
