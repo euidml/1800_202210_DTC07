@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./SettingProfileCard.css";
 import { auth, useAuth, db } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -8,7 +8,7 @@ import { doc, updateDoc, getDoc } from "firebase/firestore";
 function SettingProfileCard() {
   const [name, userName] = useState("")
   const [user] = useAuthState(auth);
-  const [picture, setPicture] = useState();
+  const [photoURL, setPhotoURL] = useState("https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png");
 
   const q = doc(db, "UserInfo", user?.uid)
 
@@ -25,6 +25,8 @@ function SettingProfileCard() {
       // alert("An error occured while fetching user data");
     }
   };
+
+
   // Create a root references
 
   // Create a reference to 'images/mountains.jpg'
@@ -57,8 +59,12 @@ function SettingProfileCard() {
   // };
 
   useEffect(() => {
+    if (user?.photoURL) {
+      setPhotoURL(user.photoURL);
+      fetchUserInfo();
+    }
     fetchUserInfo();
-  }, [])
+  }, [user])
   //   // While the file names are the same, the references point to different files
   //   mountainsRef.name === userProfileImageRef.name; // true
   //   mountainsRef.fullPath === userProfileImageRef.fullPath; // false
@@ -69,7 +75,7 @@ function SettingProfileCard() {
         <div className="image">
           <img
             className="profile_img"
-            src="https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png"
+            src={photoURL}
             alt=""
             height="100px"
             width="100px"

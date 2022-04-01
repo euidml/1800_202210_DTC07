@@ -55,7 +55,7 @@ function ChatScreen() {
 
        <Avatar
         
-            className="#"
+            className="ChatScreenAvatar"
             src={sabrina}
             alt="sabrina" 
         />

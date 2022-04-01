@@ -11,6 +11,7 @@ import SportsHockeyRoundedIcon from '@mui/icons-material/SportsHockeyRounded';
 import IceSkatingRoundedIcon from '@mui/icons-material/IceSkatingRounded';
 import DownhillSkiingRoundedIcon from '@mui/icons-material/DownhillSkiingRounded';
 import SnowboardingRoundedIcon from '@mui/icons-material/SnowboardingRounded';
+import Divider from '@mui/material/Divider';
 
 
 function SwipeButtons(
@@ -34,23 +35,24 @@ function SwipeButtons(
         <div>
             <List>
                 <ListItem className='title_list' >
-                    <p><span >Sport filter</span></p>
+                    <h4><span >Sport filter</span></h4>
                 </ListItem>
             </List>
-            <List className='list_item' fontSize='large'>
+            <Divider/>
+            <List>
 
-                <ListItem button={true} onClick={() => setActiveFilter('Hockey')}>
-                    <SportsHockeyRoundedIcon />
+                <ListItem button divider onClick={() => setActiveFilter('Hockey')}>
+                    <SportsHockeyRoundedIcon className='list_item' fontSize='large' />
 
                 </ListItem >
-                <ListItem button={true} onClick={() => setActiveFilter('Skating')}>
-                    <IceSkatingRoundedIcon />
+                <ListItem button divider onClick={() => setActiveFilter('Skating')}>
+                    <IceSkatingRoundedIcon className='list_item' fontSize='large'/>
                 </ListItem>
-                <ListItem button={true} onClick={() => setActiveFilter('Skiing')}>
-                    <DownhillSkiingRoundedIcon />
+                <ListItem button divider onClick={() => setActiveFilter('Skiing')}>
+                    <DownhillSkiingRoundedIcon className='list_item' fontSize='large'/>
                 </ListItem>
-                <ListItem button={true} onClick={() => setActiveFilter('Snowboarding')}>
-                    <SnowboardingRoundedIcon />
+                <ListItem button divider onClick={() => setActiveFilter('Snowboarding')}>
+                    <SnowboardingRoundedIcon className='list_item' fontSize='large'/>
                 </ListItem>
             </List>
         </div>

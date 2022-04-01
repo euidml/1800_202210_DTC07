@@ -2,6 +2,7 @@ import React from 'react';
 import './Chat.css'
 import { Avatar } from '@material-ui/core';
 import { Link } from "react-router-dom";
+import { Divider } from '@mui/material';
 
 function Chat({ name, message, profilePic, timestamp }) {
     return (
@@ -14,6 +15,7 @@ function Chat({ name, message, profilePic, timestamp }) {
             </div>
             <p className='chat_timestamp'>{timestamp}</p>
         </div>
+        <Divider/>
         </Link>
     );
 }

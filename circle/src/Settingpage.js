@@ -31,7 +31,6 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export default function Settingpage() {
-  const currentUser = useAuth();
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
   const [photoURL, setPhotoURL] = useState("https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png")
@@ -51,9 +50,12 @@ export default function Settingpage() {
       <Box padding={2}>
         
 
+      <Grid item xs={12}>
+        <span className='Setting_title'>Avatar upload photo</span>
+        </Grid>
       <Grid container spacing={2}>
       <Grid item xs={6}>
-      <span class="btn btn-primary btn-file"> Find image
+      <span class="btn btn-primary btn-file"> <span >Find image</span>
       <input
         type={"file"}
         className="Setting_input"
