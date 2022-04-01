@@ -8,14 +8,18 @@ import { query, collection, getDocs, where, getDoc } from "firebase/firestore";
 function TinderCards() {
   const [people, setPeople] = useState([
   ]);
-  const fetchProfilePhotos = async () => {
+  const [filter, setFilter] = useState([]);
+
+  // const [activeFilter, setActiveFilter] = useState('all');
+
+  const fetchFilteredProfiles = async () => {
     try {
       const userInfo = collection(db, "UserInfo");
-      const q = query(userInfo, where("profilePhoto.availability", "==", true));
+      const q = query(userInfo, where("PersonalInfo.sport", "in", ["Skiing"]));
       const doc = await getDocs(q);
       const data = doc.docs;
-      data.map((person)=>{
-        setPeople(
+      data.map((person) => {
+        setFilter(
           (prev) => [
             ...prev,
             {
@@ -24,7 +28,44 @@ function TinderCards() {
             }
           ]
         );
-      });
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchFilteredProfiles();
+  },[]);
+
+  const fetchProfilePhotos = async () => {
+    try {
+      const userInfo = collection(db, "UserInfo");
+      const q = query(userInfo, where("profilePhoto.availability", "==", true));
+      const doc = await getDocs(q);
+      const data = doc.docs;
+      data.map((people)=>{
+        if(people.data().personalInfo.sport == "Hockey"){
+          setPeople(
+            (prev) => [
+              ...prev,
+              {
+                name: people.data().name.split(" ")[0],
+                url: people.data().profilePhoto.photo
+              }
+            ]
+          );
+        }})
+      // data.map((person)=>{
+      //   setPeople(
+          // (prev) => [
+          //   ...prev,
+          //   {
+          //     name: person.data().name.split(" ")[0],
+          //     url: person.data().profilePhoto.photo
+          //   }
+      //     ]
+      //   );
+      // });
     } catch (err) {
       console.log(err);
     }
@@ -54,7 +95,12 @@ function TinderCards() {
           </TinderCard>
         ))}
       </div>
-      <SwipeButtons />
+      <SwipeButtons 
+      // people={people} 
+      // setFilter={setFilter} 
+      // activeFilter={activeFilter} 
+      // setActiveFilter={setActiveFilter}
+      />
     </div>
   );
 }
