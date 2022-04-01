@@ -4,13 +4,13 @@ import "./mainProfileCards.css";
 import SwipeButtons from "./SwipeButtons";
 import { auth, db } from "./firebase";
 import { query, collection, getDocs, where, getDoc } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function TinderCards() {
-  const [people, setPeople] = useState([
-  ]);
-  const [filter, setFilter] = useState([]);
-
-  // const [activeFilter, setActiveFilter] = useState('all');
+  const [user] = useAuthState(auth);
+  const [people, setPeople] = useState([]);
+  const [filteredPeople, setFilteredPeople] = useState([]);
+  const [activeFilter, setActiveFilter] = useState("");
 
   const fetchFilteredProfiles = async () => {
     try {
@@ -19,16 +19,18 @@ function TinderCards() {
       const doc = await getDocs(q);
       const data = doc.docs;
       data.map((person) => {
-        setFilter(
-          (prev) => [
+        console.log(person.id, person.data());
+        if (person.data().personalInfo?.sport == "Hockey") {
+          setPeople((prev) => [
             ...prev,
             {
+              uid: person.id,
               name: person.data().name.split(" ")[0],
               url: person.data().profilePhoto.photo
             }
-          ]
-        );
-      })
+          ]);
+        }
+      });
     } catch (err) {
       console.log(err);
     }
@@ -40,37 +42,31 @@ function TinderCards() {
       const q = query(userInfo, where("profilePhoto.availability", "==", true));
       const doc = await getDocs(q);
       const data = doc.docs;
-      data.map((people)=>{
-        console.log(people.data())
-        if(people.data().personalInfo?.sport == "Hockey"){
-          setPeople(
-            (prev) => [
-              ...prev,
-              {
-                name: people.data().name.split(" ")[0],
-                url: people.data().profilePhoto.photo
-              }
-            ]
-          );
-        }})
-      // data.map((person)=>{
-      //   setPeople(
-          // (prev) => [
-          //   ...prev,
-          //   {
-          //     name: person.data().name.split(" ")[0],
-          //     url: person.data().profilePhoto.photo
-          //   }
-      //     ]
-      //   );
-      // });
+      setPeople(people => [])
+      data.map((person) => {
+        console.log(person.id, person.data(), people);
+        if (
+          person.data().personalInfo?.sport == activeFilter ||
+          activeFilter == ""
+        ) {
+          setPeople((prev) => [
+            ...prev,
+            {
+              uid: person.id,
+              name: person.data().name.split(" ")[0],
+              url: person.data().profilePhoto.photo,
+              sport: person.data().personalInfo?.sport
+            }
+          ]);
+        }
+      });
     } catch (err) {
       console.log(err);
     }
   };
   useEffect(() => {
     fetchProfilePhotos();
-  },[]);
+  }, [activeFilter]);
   return (
     <div>
       <div className="tinderCards_cardContainers">
@@ -86,18 +82,15 @@ function TinderCards() {
               style={{ backgroundImage: `url(${person.url})` }}
               className="card"
             >
-            <div className="text_background_box">
-              <h3>{person.name}</h3>
-             </div> 
+              <div className="text_background_box">
+                <h3>{person.name}</h3>
+              </div>
             </div>
           </TinderCard>
         ))}
       </div>
-      <SwipeButtons 
-      // people={people} 
-      // setFilter={setFilter} 
-      // activeFilter={activeFilter} 
-      // setActiveFilter={setActiveFilter}
+      <SwipeButtons
+        setActiveFilter={setActiveFilter}
       />
     </div>
   );
