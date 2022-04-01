@@ -70,7 +70,8 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       profilePhoto:{
         availability:false,
         photo:""
-      }
+      },
+      favouritePeople:[]
     })
     console.log(doc(db, "UserInfo"))
   } catch (err) {

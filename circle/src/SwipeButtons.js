@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
 import "./SwipeButtons.css";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
-import FilterAltRoundedIcon from "@mui/icons-material/FilterAltRounded";
-import IconButton from "@material-ui/core/IconButton";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import SportsHockeyRoundedIcon from "@mui/icons-material/SportsHockeyRounded";
-import IceSkatingRoundedIcon from "@mui/icons-material/IceSkatingRounded";
-import DownhillSkiingRoundedIcon from "@mui/icons-material/DownhillSkiingRounded";
-import SnowboardingRoundedIcon from "@mui/icons-material/SnowboardingRounded";
-import { Divider } from "@mui/material";
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
+import FilterAltRoundedIcon from '@mui/icons-material/FilterAltRounded';
+import IconButton from "@material-ui/core/IconButton"
+import Drawer from '@material-ui/core/Drawer'
+import List from "@material-ui/core/List"
+import ListItem from "@material-ui/core/ListItem"
+import SportsHockeyRoundedIcon from '@mui/icons-material/SportsHockeyRounded';
+import IceSkatingRoundedIcon from '@mui/icons-material/IceSkatingRounded';
+import DownhillSkiingRoundedIcon from '@mui/icons-material/DownhillSkiingRounded';
+import SnowboardingRoundedIcon from '@mui/icons-material/SnowboardingRounded';
+import Divider from '@mui/material/Divider';
 
 function SwipeButtons({
   setActiveFilter,
+  swipe
 }) {
   // useEffect(() => {
   //     if (activeFilter === "") {
@@ -64,7 +65,7 @@ function SwipeButtons({
   }, []);
   return (
     <div className="swipeButtons">
-      <IconButton className="swipe_left">
+      <IconButton className="swipe_left" onClick={() => swipe('left')}>
         <CloseRoundedIcon fontSize="large" />
       </IconButton>
 
@@ -75,7 +76,7 @@ function SwipeButtons({
         </Drawer>
       </IconButton>
 
-      <IconButton className="swipe_right">
+      <IconButton className="swipe_right" onClick={() => swipe('right')}>
         <CheckRoundedIcon fontSize="large" />
       </IconButton>
     </div>
