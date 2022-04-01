@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./SwipeButtons.css";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
@@ -13,7 +13,17 @@ import DownhillSkiingRoundedIcon from '@mui/icons-material/DownhillSkiingRounded
 import SnowboardingRoundedIcon from '@mui/icons-material/SnowboardingRounded';
 
 
-function SwipeButtons() {
+function SwipeButtons(
+    setActiveFilter, activeFilter, people, setFilter) {
+
+    // useEffect(() => {
+    //     if (activeFilter === "") {
+    //         setFilter(people)
+    //         return;
+    //     }
+    //     const filtered = people.filter((person) => person.)
+
+    // }, [activeFilter]);
 
     const [state, setState] = React.useState(false)
     const toggleDrawer = (open) => (event) => {
@@ -26,18 +36,21 @@ function SwipeButtons() {
                 <ListItem className='title_list' >
                     <p><span >Sport filter</span></p>
                 </ListItem>
-                <ListItem onClick={toggleDrawer(false)}>
-                    <SportsHockeyRoundedIcon className='list_item' fontSize='large' />
+            </List>
+            <List className='list_item' fontSize='large'>
+
+                <ListItem button={true} onClick={() => setActiveFilter('Hockey')}>
+                    <SportsHockeyRoundedIcon />
 
                 </ListItem >
-                <ListItem button={true} onClick={toggleDrawer(false)}>
-                    <IceSkatingRoundedIcon className='list_item' fontSize='large'/>
+                <ListItem button={true} onClick={() => setActiveFilter('Skating')}>
+                    <IceSkatingRoundedIcon />
                 </ListItem>
-                <ListItem button={true} onClick={toggleDrawer(false)}>
-                    <DownhillSkiingRoundedIcon  className='list_item' fontSize='large'/>
+                <ListItem button={true} onClick={() => setActiveFilter('Skiing')}>
+                    <DownhillSkiingRoundedIcon />
                 </ListItem>
-                <ListItem button={true} onClick={toggleDrawer(false)}>
-                    <SnowboardingRoundedIcon className='list_item' fontSize='large'/>
+                <ListItem button={true} onClick={() => setActiveFilter('Snowboarding')}>
+                    <SnowboardingRoundedIcon />
                 </ListItem>
             </List>
         </div>
