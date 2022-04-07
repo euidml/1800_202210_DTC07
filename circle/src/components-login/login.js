@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import logo from "../circlelogo.png";
+import logo from "../Circle_logo_front.png";
 import theme from "../Palette"
 
 

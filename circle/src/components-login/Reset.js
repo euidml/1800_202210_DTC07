@@ -12,7 +12,7 @@ import {
     Typography,
     Link,
   } from "@material-ui/core";
-import logo from "../circlelogo.png";
+import logo from "../Circle_logo_front.png";
 import theme from "../Palette"
 
 function Reset() {
