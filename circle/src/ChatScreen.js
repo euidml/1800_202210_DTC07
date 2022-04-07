@@ -83,13 +83,17 @@ function ChatScreen() {
     );
   const handleSend = async (e) => {
     e.preventDefault();
+    const messageSentTime = Timestamp.fromDate(new Date())
     await updateDoc(doc(db, "chatRooms", "AI3DCiH7NVs3WZb70cSC"), {
       chatLogs: arrayUnion({
         userName: name,
         sender: user?.uid,
         text: input,
-        sentTime: Timestamp.fromDate(new Date())
-      })
+        sentTime: messageSentTime
+      }),
+      infos:{
+        latestChat: messageSentTime
+      }
     });
     setMessages([...messages, { message: input }]);
     setInput("");

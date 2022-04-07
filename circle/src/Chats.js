@@ -1,35 +1,75 @@
-import React from 'react';
-import './Chats.css';
+import React, { useEffect, useState } from "react";
+import "./Chats.css";
 import Chat from "./Chat";
+import {
+  documentId,
+  getDoc,
+  orderBy,
+  query,
+  where,
+  getDocs,
+  collection,
+  doc
+} from "firebase/firestore";
+import { auth, db } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Chats() {
-    return (
-      <div className='chats'>
-          <Chat
-            name="Sabrina"
-            message="Yo what's up!"
-            timestamp="40 seconds ago"
-            profilePic="https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg"
-            />
-      
-
-          <Chat
-          name="Jessica"
-          message="Hey you up"
-          timestamp="30 seconds ago"
-          profilePic="https://i.pinimg.com/736x/0d/74/08/0d7408886db088edf667f52c7a06caca.jpg"
-          />
-
-          <Chat
-          name="DannyBoy"
-          message="Did you forget about me?"
-          timestamp="40 seconds ago"
-          profilePic="https://i.pinimg.com/474x/fe/e7/95/fee7955fc64ea5956e8619d5061192bd--pretty-men-pretty-boys.jpg"
-          />
-         
-          
-      </div>
-    );
+  const [user] = useAuthState(auth);
+  const [chatList, setChatList] = useState([]);
+  const [fetchStatus, setFetchStatus] = useState(false);
+  const fetchChatList = async () => {
+    try {
+      if (!fetchStatus) {
+        const q1 = doc(db, "UserInfo", user?.uid);
+        const doc1 = await getDoc(q1);
+        const data1 = doc1.data().chatRooms;
+        let chatRoomList = [];
+        data1.map((person) => {
+          chatRoomList.push(person.chatRoom);
+        });
+        console.log(chatRoomList);
+        // const q2 = query(collection(db, "chatRooms"), where(documentId(), "in", chatRoomList), orderBy("infos.latestChat"))
+        const q2 = query(
+          collection(db, "chatRooms"),
+          where(documentId(), "in", chatRoomList)
+        );
+        const data2 = await getDocs(q2);
+        data2.forEach((doc) => {
+          chatList.push([doc.data(), doc.id]);
+        setFetchStatus(true)
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const renderChatlist = () => {
+    return chatList.map((data) => (
+      <Chat
+        name={
+          data[0].users[0].uid == user?.uid
+            ? data[0].users[1].name
+            : data[0].users[0].name
+        }
+        message={data[0].chatLogs.pop().text}
+        timestamp={data[0].infos.latestChat.toDate().getTime()}
+        profilePic={
+          data[0].users[0].uid == user?.uid
+            ? data[0].users[1].photo
+            : data[0].users[0].photo
+        }
+      />
+    ));
+  };
+  useEffect(() => {
+    fetchChatList();
+  }, []);
+  return (
+    <div className="chats">
+      {renderChatlist()}
+    </div>
+  );
 }
 
 export default Chats;
