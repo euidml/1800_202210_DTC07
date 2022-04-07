@@ -67,12 +67,13 @@
 .Setting_upload_container{
     padding-top: 20px;
    padding-bottom: 20px;
+   margin-bottom: 10px;
 }
 
 .Setting_upload {
     width: 20vw;
     float: right;
-    margin: 0px 35px 0px 0px;
+    margin: 0px 0px 0px 0px;
     padding: 5px;
     color: royalblue;
     outline: 0;

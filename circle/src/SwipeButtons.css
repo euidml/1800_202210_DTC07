@@ -12,14 +12,15 @@
 }
 
 .swipe_left{
-    padding: 3vw !important;
+
     color: #ec5e6f !important;
 }
 
 
 .swipe_right{
-    padding: 3vw !important;
+
     color: #76e2b3 !important;
+    max-width: 60px;
 }
 
 .list_item {

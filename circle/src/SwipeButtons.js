@@ -12,6 +12,8 @@ import IceSkatingRoundedIcon from '@mui/icons-material/IceSkatingRounded';
 import DownhillSkiingRoundedIcon from '@mui/icons-material/DownhillSkiingRounded';
 import SnowboardingRoundedIcon from '@mui/icons-material/SnowboardingRounded';
 import Divider from '@mui/material/Divider';
+import like from "./like.png";
+import dislike from "./dislike.png";
 
 function SwipeButtons({
   setActiveFilter,
@@ -65,9 +67,10 @@ function SwipeButtons({
   }, []);
   return (
     <div className="swipeButtons">
-      <IconButton className="swipe_left" onClick={() => swipe('left')}>
+      {/* <IconButton className="swipe_left" onClick={() => swipe('left')}>
         <CloseRoundedIcon fontSize="large" />
-      </IconButton>
+      </IconButton> */}
+      <img className="swipe_right" src={dislike}></img>
 
       <IconButton className="filter">
         <FilterAltRoundedIcon fontSize="large" onClick={toggleDrawer(true)} />
@@ -76,9 +79,11 @@ function SwipeButtons({
         </Drawer>
       </IconButton>
 
-      <IconButton className="swipe_right" onClick={() => swipe('right')}>
+      {/* <IconButton className="swipe_right" onClick={() => swipe('right')}>
         <CheckRoundedIcon fontSize="large" />
-      </IconButton>
+      </IconButton> */}
+  
+      <img className="swipe_right" src={like}></img>
     </div>
   );
 }

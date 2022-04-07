@@ -24,10 +24,10 @@
 .text_background_box {
     position: absolute;
     bottom: 10px;
-    color: #9acd32;
+    color: royalblue;
     font: bold;
     font-size: xx-large;
-    background-color: #4B0082;
+    background-color: #9acd32;
     border-radius: 20px;
     padding: 7px;
 }

@@ -9,13 +9,13 @@ import './Favorite.css';
 function Favorite() {
     return (
         <div>
-        <Link to="/dashboard">
+        {/* <Link to="/dashboard">
         <IconButton>
         <ArrowBackIosNewIcon className='backarrow' fontSize='large' />
         </IconButton>
-        </Link>
+        </Link> */}
         
-        <h2 className='fav'>💛 You favorited 3 people</h2>
+        <h2 className='fav'>💛 Your favorited people</h2>
         <div className='img_container'>
             <div className='images'>
                 <img src='https://i2-prod.mirror.co.uk/incoming/article11167826.ece/ALTERNATES/n310p/0_Thylane-Blondeau.jpg' alt='ed'></img>
