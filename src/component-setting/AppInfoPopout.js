@@ -16,7 +16,7 @@ export default function Version() {
   const handleClose = () => {
     setOpen(false);
   };
-
+// Popup for Version button
   return (
     <div>
       <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> <span className='Setting_text'>App Information</span></Button>

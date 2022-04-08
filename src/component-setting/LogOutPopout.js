@@ -18,7 +18,7 @@ export default function LogOutPopout() {
   const handleClose = () => {
     setOpen(false);
   };
-
+// Popup for the Logout button
   return (
     <div>
       <Button variant="outlined" fullWidth={true} color='error' onClick={handleClickOpen}>
@@ -40,6 +40,7 @@ export default function LogOutPopout() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>No</Button>
+          {/* When user clicks Yes, it will bring user to login page */}
           <Button onClick={logout} component={RouterDomLink} to="/" >Yes</Button>
         </DialogActions>
       </Dialog>

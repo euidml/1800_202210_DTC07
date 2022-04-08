@@ -16,7 +16,7 @@ export default function Acknowledgment() {
   const handleClose = () => {
     setOpen(false);
   };
-
+// Popup for Acknowledgment button
   return (
     <div>
       <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}><span className='Setting_text'>Acknowledgment</span></Button>
