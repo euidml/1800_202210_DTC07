@@ -22,7 +22,7 @@ export default function LogOutPopout() {
 
   return (
     <div>
-      <Button variant="outlined" fullWidth={true} color='secondary' onClick={handleClickOpen}>
+      <Button variant="outlined" fullWidth={true} color='error' onClick={handleClickOpen}>
         LOGOUT
       </Button>
       <Dialog

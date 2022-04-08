@@ -1,21 +1,37 @@
-## My Web Application (Add your Title here)
+## DTC Team07 Project Circle
+![Project Image](./images/circleNewColor.png)
 
-* [General info](#general-info)
+> A dating app designed for Olympic athletes!
+---
+
+
+* [Description](#description)
+* [How To Use](#how-to-use)
 * [Technologies](#technologies)
-* [Contents](#content)
+* [References](#references)
+* [Contents](#contents)
+* [Author Info](#author-info)
+---
 
-## General Info
-This browser based web application to ...
-* Hi my name is Edward. I'm excited about this project because I want to enhance and upgrade my coding skills!
-* Hi my name is run. I'm excited to get it done.
-* Hi my name is Jason. I'm exited about this project because i am new
-	
+
+## Description
+A simple dating web app that allows users to filter, swipe and send chat messages to people.
+
+---
+## How To Use
+`npm start`
+
+---
+## References
+Profile pictures: Google Image
+
+---
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
-* JavaScript
-* Bootstrap 
-* ...
+* React
+* Firebase
+---
 	
 ## Content
 Content of the project folder:
@@ -23,25 +39,65 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
-└── README.md
+├── index.html               # Default index.html
+└── README.md                # README file
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
-    /blah.jpg                # 
+    /circleNewColor.jpg     
+    /Sabrina.jpg          
+    /like.png               
+    /dislike.png            
+    /bottompic.png           
 ├── scripts                  # Folder for scripts
-    /blah.js                 # 
-├── styles                   # Folder for styles
-    /blah.css                # 
+    /App.js                  
+    /Chat.js                 
+    /Chats.js               
+    /ChatScreen.js          
+    /Favorite.js             
+    /firebase.js             
+    /Header.js               
+    /index.js                
+    /LogOutPopout.js         
+    /main.js                 
+    /mainProfileCards.js     
+    /MyAccountPopout.js      
+    /Palette.js              
+    /Profileform.js          
+    /Profilepage.js          
+    /reportWebVitals.js      
+    /Settingpage.js          
+    /SettingProfileCard.js   
+    /setupTests.js           
+    /SupportPopup.js         
+    /SwipeButtons.js          
+├── styles                  # Folder for stylesheets               
+    /App.css                 
+    /Chat.css                
+    /Favorite.css            
+    /Header.css              
+    /index.css               
+    /mainProfileCards.css    
+    /Profilepage.css         
+    /SettingProfileCards.css 
+    SwipeButtons.css         
+
 
 Firebase hosting files: 
 ├── .firebaserc...
 
 
 ```
+---
+## Author-info
+- Designer: Jason Lui
+- Coder: Edward Lee
+- Product Manager: Hairun Huang
 
-Tips for file naming files and folders:
-* use lowercase with no spaces
-* use dashes (not underscore) for word separation
+---
+**Version 1.0.0**
+
+[Back to the top](#description)
+
 
