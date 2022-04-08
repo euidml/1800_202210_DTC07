@@ -29,7 +29,7 @@ const Login = () => {
     width: 280,
     margin: "20px auto",
   };
-  const logoStyle = { width: "20vh", height:"20vh" };
+  const logoStyle = { width: "20vh", height:"20vh", bgcolor:"#633cff" };
   const btnstyle = { margin: "8px 0", backgroundColor: theme.palette.primary.main };
   useEffect(() => {
     if (loading) {
