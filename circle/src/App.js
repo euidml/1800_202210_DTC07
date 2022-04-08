@@ -29,7 +29,7 @@ function App() {
         <Route exact path="/resetpassword" element={<ResetUserPassword />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/dashboard/chats" element={<Chats  />} />
-        <Route exact path="/chat/:person" element={<ChatScreen />} />
+        <Route exact path="/chat/:chatRoomId" element={<ChatScreen chatRoomId={pathname.split("chat/")[1]}/>} />
         <Route exact path="/dashboard/profile" element={<ProfilePage />} />
         <Route exact path="/bottom/settingpage" element={<Settingpage />} />
         <Route exact path="favorite" element={<Favorite />} />

@@ -4,9 +4,9 @@ import { Avatar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import { Divider } from '@mui/material';
 
-function Chat({ name, message, profilePic, timestamp }) {
+function Chat({ name, message, profilePic, timestamp, chatRoomId }) {
     return (
-        <Link to={`/chat/${name}`}>
+        <Link to={`/chat/${chatRoomId}`}>
         <div className='chat'>
             <Avatar className="chat_image" alt={name} src={profilePic} />
             <div className='chat_details'>

@@ -22,32 +22,55 @@ import useId from "@mui/material/utils/useId";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { async } from "@firebase/util";
 
-function ChatScreen() {
+function ChatScreen({ chatRoomId }) {
+  console.log(chatRoomId);
   const [user] = useAuthState(auth);
   const [input, setInput] = useState("");
   const [name, setName] = useState("");
+  const [partnerInfo, setPartnerInfo] = useState([]);
+  const [date, setDate] = useState("");
   const [messages, setMessages] = useState([
     () =>
-      onSnapshot(doc(db, "chatRooms", "AI3DCiH7NVs3WZb70cSC"), (snapshot) =>
+      onSnapshot(doc(db, "chatRooms", chatRoomId), (snapshot) =>
         setMessages(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
       )
   ]);
-  const fetchSenderName = async () => {
-    const docSnap = await getDoc(doc(db, "chatRooms", "AI3DCiH7NVs3WZb70cSC"));
-    const userName = () => {
-      let name = "";
+  console.log(messages, partnerInfo, date);
+  const fetchUserNames = async () => {
+    const docSnap = await getDoc(doc(db, "chatRooms", chatRoomId));
+    console.log(docSnap.data());
+    const fetchUsersInfo = () => {
+      const createdDate = docSnap
+        .data()
+        .infos.chatRoomCreatedAt.toDate()
+        .toDateString();
+      let userName = "";
+      let partnerName = "";
+      let partnerPhoto = "";
       docSnap.data().users.map((person) => {
         if (person.uid == user?.uid) {
-          name = person.name;
+          userName = person.name;
+        } else {
+          // setPartnerInfo([person.name, person.photo])
+          // setPartnerInfo(prevState => ({...prevState, name: person.name, photo:person.photo}))
+          partnerName = person.name;
+          partnerPhoto = person.photo;
         }
       });
-      return name;
+      return [
+        userName,
+        { name: partnerName, photo: partnerPhoto },
+        createdDate
+      ];
     };
-    setName(userName);
+    const userData = fetchUsersInfo();
+    setName(userData[0]);
+    partnerInfo.push(userData[1]);
+    setDate(userData[2]);
   };
   // const [name, setName] = useState(docSnap.data().users?.(user.uid).name)
   useEffect(() => {
-    const q = query(doc(db, "chatRooms", "AI3DCiH7NVs3WZb70cSC"));
+    const q = query(doc(db, "chatRooms", chatRoomId));
     onSnapshot(q, (doc) => {
       const messages = [];
       console.log(doc.data());
@@ -61,7 +84,7 @@ function ChatScreen() {
       });
       setMessages(messages);
     });
-    fetchSenderName();
+    fetchUserNames();
     // messagesShowUp();
   }, []);
   const messagesShowUp = () =>
@@ -83,15 +106,15 @@ function ChatScreen() {
     );
   const handleSend = async (e) => {
     e.preventDefault();
-    const messageSentTime = Timestamp.fromDate(new Date())
-    await updateDoc(doc(db, "chatRooms", "AI3DCiH7NVs3WZb70cSC"), {
+    const messageSentTime = Timestamp.fromDate(new Date());
+    await updateDoc(doc(db, "chatRooms", chatRoomId), {
       chatLogs: arrayUnion({
         userName: name,
         sender: user?.uid,
         text: input,
         sentTime: messageSentTime
       }),
-      infos:{
+      infos: {
         latestChat: messageSentTime
       }
     });
@@ -108,7 +131,11 @@ function ChatScreen() {
           </IconButton>
         </Link>
 
-        <Avatar className="ChatScreenAvatar" src={sabrina} alt="sabrina" />
+        <Avatar
+          className="ChatScreenAvatar"
+          src={partnerInfo[0]?.photo}
+          alt={partnerInfo[0]?.name}
+        />
 
         <Link to="/favorite">
           <IconButton>
@@ -118,7 +145,7 @@ function ChatScreen() {
       </div>
 
       <p className="chatScreen_timestamp">
-        YOU MATCHED WITH SABRINA ON 10/09/20
+        YOU MATCHED WITH {partnerInfo[0]?.name.toUpperCase()} <br/>ON {date}
       </p>
       {messagesShowUp()}
 

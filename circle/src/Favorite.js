@@ -57,7 +57,8 @@ function Favorite() {
       users: [
         { name: name, uid: user.uid, photo: photoRef },
         { name: partnerName, uid: partnerUid, photo: partnerPictureSrc }
-      ]
+      ],
+      chatLogs:[]
     });
     await updateDoc(doc(db, "UserInfo", user.uid), {
       chatRooms: arrayUnion({
