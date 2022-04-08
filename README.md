@@ -19,7 +19,7 @@ A simple dating web app that allows users to filter, swipe, and send chat messag
 
 ---
 ## How To Use
-`npm start`
+`Choose iPhone12 view for optimal experience`
 
 ---
 ## References
