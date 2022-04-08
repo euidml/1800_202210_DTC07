@@ -1,23 +1,29 @@
 ## DTC Team07 Project Circle
 ![Project Image](./images/circleNewColor.png)
 
-> Short Project Blurb
+> A dating app designed for Olympic athletes!
 ---
 
 
-* [Description](#general-info)
-* [How to use](#how-to-use)
+* [Description](#description)
+* [How To Use](#how-to-use)
 * [Technologies](#technologies)
-* [Contents](#content)
+* [References](#reference)
+* [Contents](#contents)
 * [Author Info](#author-info)
 ---
 
 
 ## Description
+A simple dating web app that allows users to filter, swipe and send chat messages to people.
 
 ---
+## How To Use
+`npm start`
 
-## How-to-use
+---
+## References
+Profile pictures: Google Image
 
 ---
 ## Technologies
@@ -33,17 +39,50 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
-└── README.md
+├── index.html               # Default index.html
+└── README.md                # README file
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
-    /blah.jpg                # 
+    /circleNewColor.jpg     
+    /Sabrina.jpg          
+    /like.png               
+    /dislike.png            
+    /bottompic.png           
 ├── scripts                  # Folder for scripts
-    /blah.js                 # 
-├── styles                   # Folder for styles
-    /blah.css                # 
+    /App.js                  
+    /Chat.js                 
+    /Chats.js               
+    /ChatScreen.js          
+    /Favorite.js             
+    /firebase.js             
+    /Header.js               
+    /index.js                
+    /LogOutPopout.js         
+    /main.js                 
+    /mainProfileCards.js     
+    /MyAccountPopout.js      
+    /Palette.js              
+    /Profileform.js          
+    /Profilepage.js          
+    /reportWebVitals.js      
+    /Settingpage.js          
+    /SettingProfileCard.js   
+    /setupTests.js           
+    /SupportPopup.js         
+    /SwipeButtons.js          
+├── styles                  
+    /App.css                 
+    /Chat.css                
+    /Favorite.css            
+    /Header.css              
+    /index.css               
+    /mainProfileCards.css    
+    /Profilepage.css         
+    /SettingProfileCards.css 
+    SwipeButtons.css         
+
 
 Firebase hosting files: 
 ├── .firebaserc...
@@ -52,11 +91,13 @@ Firebase hosting files:
 ```
 ---
 ## Author-info
-* Designer: Jason Lui
-* Coder: Edward Lee
-* Product Manager: Hairun Huang
+- Designer: Jason Lui
+- Coder: Edward Lee
+- Product Manager: Hairun Huang
 
 ---
 **Version 1.0.0**
-[Back to the top](#general-info)
+
+[Back to the top](#description)
+
 
