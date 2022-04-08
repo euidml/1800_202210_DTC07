@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -17,9 +17,12 @@ import CreateRoundedIcon from "@mui/icons-material/CreateRounded";
 import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import GroupsRoundedIcon from "@mui/icons-material/GroupsRounded";
-import { useEffect, useState } from "react";
-import { useAuth, upload } from "./firebase";
-import { logout } from "./firebase";
+import { logout, auth, useAuth, db } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { doc, updateDoc, getDoc } from "firebase/firestore";
+import { fabClasses } from "@mui/material";
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -30,21 +33,53 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Settingpage() {
-  const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [photoURL, setPhotoURL] = useState(
-    "https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png"
-  );
+  // const [photoURL, setPhotoURL] = useState(
+  //   "https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png"
+  // );
+  const [people, setPeople] = useState([]);
+  const [name, userName] = useState("")
+  const [user] = useAuthState(auth);
+  const [picture, setPicture] = useState("");
+  const [profileAvailablity] = useState(true)
+  const q = doc(db, "UserInfo", user?.uid)
 
-  function handleChange(e) {
+  const handleSubmit = (e) => {
+    setLoading(true)
+    const storage = getStorage();
+    const userProfileImageRef = ref(storage, user.uid + picture.name);
+    console.log(userProfileImageRef);
+    uploadBytes(userProfileImageRef, picture).then((snapshot) => {
+      console.log("Uploaded a blob or file!");
+    });
+    getDownloadURL(userProfileImageRef).then((url) => {
+      console.log(url);
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = "blob";
+      xhr.onload = (event) => {
+        const blob = xhr.response;
+      };
+      xhr.open("GET", url);
+      xhr.send();
+      const currentUserInfo = doc(db, "UserInfo", user.uid);
+      console.log(url)
+       updateDoc(currentUserInfo, {
+        profilePhoto: {
+          availability: profileAvailablity,
+          photo: url
+        }
+      });
+    });
+    setLoading(false)
+  };
+
+  const handleChange = (e) => {
     if (e.target.files[0]) {
-      setPhoto(e.target.files[0]);
+      setPicture(e.target.files[0]);
     }
   }
+  
 
-  function handleClick() {
-    upload(photo);
-  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <SettingProfileCard />
@@ -67,8 +102,8 @@ export default function Settingpage() {
           </Grid>
           <Grid item xs={6}>
             {/* <div className="=Setting_upload_box"> */}
-              {photo !== null && (
-                <button className="Setting_upload" onClick={handleClick} disabled={loading}>
+              {picture !== null && (
+                <button className="Setting_upload" onClick={handleSubmit} disabled={loading}>
                   Upload
                 </button>
               )}

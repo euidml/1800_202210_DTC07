@@ -6,13 +6,45 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 
 function SettingProfileCard() {
-  const [people, setPeople] = useState([]);
+  // const [people, setPeople] = useState([]);
   const [name, userName] = useState("")
   const [user] = useAuthState(auth);
-  const [picture, setPicture] = useState("");
+  const [photo, setPhoto] = useState("");
   const [profileAvailablity] = useState(true)
   const q = doc(db, "UserInfo", user?.uid)
 
+  // const handleSubmit = (e) => {
+  //   const storage = getStorage();
+  //   const userProfileImageRef = ref(storage, user.uid + picture.name);
+  //   console.log(userProfileImageRef);
+  //   uploadBytes(userProfileImageRef, picture).then((snapshot) => {
+  //     console.log("Uploaded a blob or file!");
+  //   });
+  //   getDownloadURL(userProfileImageRef).then((url) => {
+  //     console.log(url);
+  //     const xhr = new XMLHttpRequest();
+  //     xhr.responseType = "blob";
+  //     xhr.onload = (event) => {
+  //       const blob = xhr.response;
+  //     };
+  //     xhr.open("GET", url);
+  //     xhr.send();
+  //     const currentUserInfo = doc(db, "UserInfo", user.uid);
+  //     console.log(url)
+  //     updateDoc(currentUserInfo, {
+  //       profilePhoto: {
+  //         availability: profileAvailablity,
+  //         photo: url
+  //       }
+  //     });
+  //   });
+  // };
+
+  // const handleChange = (e) => {
+  //   if (e.target.files[0]) {
+  //     setPhoto(e.target.files[0]);
+  //   }
+  // }
 
   const fetchUserInfo = async () => {
     try {
@@ -20,7 +52,7 @@ function SettingProfileCard() {
       const UserInfo = doc.data();
       // assign each data into proper var
       userName(UserInfo.name);
-      setPicture(UserInfo.profilePhoto.photo)
+      setPhoto(UserInfo.profilePhoto.photo)
     } catch (err) {
       console.error(err);
       // alert("An error occured while fetching user data");
@@ -32,32 +64,7 @@ function SettingProfileCard() {
 
   // Create a reference to 'images/mountains.jpg'
 
-  const handleSubmit = (e) => {
-    const storage = getStorage();
-    const userProfileImageRef = ref(storage, user.uid + picture.name);
-    console.log(userProfileImageRef);
-    uploadBytes(userProfileImageRef, picture).then((snapshot) => {
-      console.log("Uploaded a blob or file!");
-    });
-    getDownloadURL(userProfileImageRef).then((url) => {
-      console.log(url);
-      const xhr = new XMLHttpRequest();
-      xhr.responseType = "blob";
-      xhr.onload = (event) => {
-        const blob = xhr.response;
-      };
-      xhr.open("GET", url);
-      xhr.send();
-      const currentUserInfo = doc(db, "UserInfo", user.uid);
-      console.log(url)
-      updateDoc(currentUserInfo, {
-        profilePhoto: {
-          availability: profileAvailablity,
-          photo: url
-        }
-      });
-    });
-  };
+  
 
   useEffect(() => {
     fetchUserInfo();
@@ -72,7 +79,7 @@ function SettingProfileCard() {
         <div className="image">
           <img
             className="profile_img"
-            src={picture}
+            src={photo}
             alt=""
             height="100px"
             width="100px"
