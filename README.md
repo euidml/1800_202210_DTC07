@@ -8,7 +8,7 @@
 * [Description](#description)
 * [How To Use](#how-to-use)
 * [Technologies](#technologies)
-* [References](#reference)
+* [References](#references)
 * [Contents](#contents)
 * [Author Info](#author-info)
 ---
@@ -72,7 +72,7 @@ It has the following subfolders and files:
     /setupTests.js           
     /SupportPopup.js         
     /SwipeButtons.js          
-├── styles                  
+├── styles                  # Folder for stylesheets               
     /App.css                 
     /Chat.css                
     /Favorite.css            
