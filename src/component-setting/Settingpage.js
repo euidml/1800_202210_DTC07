@@ -40,6 +40,7 @@ export default function Settingpage() {
   const [profileAvailablity] = useState(true)
   const q = doc(db, "UserInfo", user?.uid)
 
+  // Uploading photo to firebase
   const handleSubmit = (e) => {
     setLoading(true)
     const storage = getStorage();
@@ -49,7 +50,6 @@ export default function Settingpage() {
       console.log("Uploaded a blob or file!");
     });
     getDownloadURL(userProfileImageRef).then((url) => {
-      console.log(url);
       const xhr = new XMLHttpRequest();
       xhr.responseType = "blob";
       xhr.onload = (event) => {
@@ -58,7 +58,6 @@ export default function Settingpage() {
       xhr.open("GET", url);
       xhr.send();
       const currentUserInfo = doc(db, "UserInfo", user.uid);
-      console.log(url)
        updateDoc(currentUserInfo, {
         profilePhoto: {
           availability: profileAvailablity,
