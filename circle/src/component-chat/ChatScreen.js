@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar } from "@material-ui/core";
 import "./ChatScreen.css";
-import { auth, db } from "./firebase";
+import { auth, db } from "../component-global/firebase";
 import {
   doc,
   onSnapshot,
   Timestamp,
-  addDoc,
   query,
-  collection,
   getDoc,
   updateDoc,
   arrayUnion
@@ -17,29 +15,29 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import sabrina from "./sabrina.jpg";
-import useId from "@mui/material/utils/useId";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { async } from "@firebase/util";
 
 function ChatScreen({ chatRoomId }) {
-  console.log(chatRoomId);
+  // declaring what data will be used for chat slide
   const [user] = useAuthState(auth);
   const [input, setInput] = useState("");
   const [name, setName] = useState("");
   const [partnerInfo, setPartnerInfo] = useState([]);
   const [date, setDate] = useState("");
+  // initiating fetching chat logs data. when user opened the chat first
   const [messages, setMessages] = useState([
     () =>
       onSnapshot(doc(db, "chatRooms", chatRoomId), (snapshot) =>
         setMessages(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
       )
   ]);
-  console.log(messages, partnerInfo, date);
-  const fetchUserNames = async () => {
+
+  // fetching both users' info and make it usable at both users' end
+  const fetchUserInfos = async () => {
+    // fecthing data of chat room with chatRoomID that is given from url
     const docSnap = await getDoc(doc(db, "chatRooms", chatRoomId));
-    console.log(docSnap.data());
     const fetchUsersInfo = () => {
+      // refactoring data that is usable for each user's side.
       const createdDate = docSnap
         .data()
         .infos.chatRoomCreatedAt.toDate()
@@ -51,8 +49,6 @@ function ChatScreen({ chatRoomId }) {
         if (person.uid == user?.uid) {
           userName = person.name;
         } else {
-          // setPartnerInfo([person.name, person.photo])
-          // setPartnerInfo(prevState => ({...prevState, name: person.name, photo:person.photo}))
           partnerName = person.name;
           partnerPhoto = person.photo;
         }
@@ -63,17 +59,17 @@ function ChatScreen({ chatRoomId }) {
         createdDate
       ];
     };
+    // call the fetchUsersInfo() and store data insde the vars already declared.
     const userData = fetchUsersInfo();
     setName(userData[0]);
     partnerInfo.push(userData[1]);
     setDate(userData[2]);
   };
-  // const [name, setName] = useState(docSnap.data().users?.(user.uid).name)
   useEffect(() => {
+    // fecth updated chat logs whenever it updated.
     const q = query(doc(db, "chatRooms", chatRoomId));
     onSnapshot(q, (doc) => {
       const messages = [];
-      console.log(doc.data());
       doc.data().chatLogs.map((message) => {
         messages.push({
           sender: message.sender,
@@ -84,26 +80,30 @@ function ChatScreen({ chatRoomId }) {
       });
       setMessages(messages);
     });
-    fetchUserNames();
+    fetchUserInfos();
     messagesShowUp();
   }, []);
+  // A function to show messages
   const messagesShowUp = () =>
     messages.map((message) =>
       message.sender != user?.uid ? (
+        // print partner's chat log
         <div className="chatScreen_message">
           <Avatar
             className="chatScreen_image"
             alt={message.userName}
-            // src={message.image}
+            src={partnerInfo[0]?.photo}
           />
           <p className="chatScreen_text">{message.text}</p>
         </div>
       ) : (
+        // print user's chat log
         <div className="chatScreen_message">
           <p className="chatScreen_textUser">{message.text}</p>
         </div>
       )
     );
+  // submitting chat to db
   const handleSend = async (e) => {
     e.preventDefault();
     const messageSentTime = Timestamp.fromDate(new Date());
@@ -119,7 +119,7 @@ function ChatScreen({ chatRoomId }) {
     setMessages([...messages, { message: input }]);
     setInput("");
   };
-
+  // rendering chat slide
   return (
     <div className="chatScreen">
       <div className="twoicons">
@@ -143,7 +143,8 @@ function ChatScreen({ chatRoomId }) {
       </div>
 
       <p className="chatScreen_timestamp">
-        YOU MATCHED WITH {partnerInfo[0]?.name.toUpperCase()} <br/>ON {date}
+        YOU MATCHED WITH {partnerInfo[0]?.name.toUpperCase()} <br />
+        ON {date}
       </p>
       {messagesShowUp()}
 

@@ -1,42 +1,39 @@
-import "../src/Profilepage.css";
+import "./Profilepage.css";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db } from "./firebase";
+import { auth, db } from "../component-global/firebase";
 import { setDoc, getDoc, doc } from "firebase/firestore";
 import editUserInfo from "./ProfileFormDB";
 
 const Profileform = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const [name, setName] = useState("");
   var [age, setAge] = useState("");
   var [gender, setGender] = useState("");
   var [sport, setSport] = useState("");
   var [hobbies, setHobbies] = useState("");
   var [game, setGame] = useState("");
-  const [loader, setLoader] = useState(true);
   const [refresh, setRefresh] = useState(true);
-    {refresh && auth.onAuthStateChanged((user) => {
-      if (user) {
-        const currentUserInfo = getDoc(doc(db, "UserInfo", user.uid))
-        currentUserInfo.then((UserInfoDoc) => {
-          for (const item in UserInfoDoc.data()) {
-            if (item != null) {
-                console.log(item, UserInfoDoc.data()[item])
-              // document.getElementById(`${item}Input`).setAttribute('value', UserInfoDoc.data()[item]);
-              age = UserInfoDoc.data()[age];
+  {
+    refresh &&
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          const currentUserInfo = getDoc(doc(db, "UserInfo", user.uid));
+          currentUserInfo.then((UserInfoDoc) => {
+            for (const item in UserInfoDoc.data()) {
+              if (item != null) {
+                console.log(item, UserInfoDoc.data()[item]);
+                age = UserInfoDoc.data()[age];
+              }
             }
-          }
-        // if (UserInfoDoc.data()[name]!= null) {
-        //     console.log(UserInfoDoc.data()[name])
-        //     document.getElementById(`nameInput`).value = UserInfoDoc.data()[name];}
-        });
-        setRefresh(false);
-      }
-    });
+          });
+          setRefresh(false);
+        }
+      });
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user.uid)
+    console.log(user.uid);
     editUserInfo(user.uid, name, age, gender, sport, hobbies, game);
   };
   return (
@@ -93,13 +90,7 @@ const Profileform = () => {
         {" "}
       </textarea>
 
-      <button
-        type="submit"
-        // style={{ background: loader ? "#ccc" : "rgb(2, 2, 110)" }}
-      >
-        {" "}
-        Submit{" "}
-      </button>
+      <button type="submit"> Submit </button>
     </form>
   );
 };

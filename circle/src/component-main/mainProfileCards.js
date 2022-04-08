@@ -2,11 +2,14 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
 import "./mainProfileCards.css";
 import SwipeButtons from "./SwipeButtons";
-import { auth, db } from "./firebase";
-import { query, collection, getDocs, where, getDoc, arrayUnion, updateDoc, doc } from "firebase/firestore";
+import { auth, db } from "../component-global/firebase";
+import { query, collection, getDocs, where, arrayUnion, updateDoc, doc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+// function for swiping cards component.
+// we uses TinderCard components.
 function TinderCards() {
+  // declaring data used in this 
   const [user] = useAuthState(auth);
   const [people, setPeople] = useState([]);
   const [filteredPeople, setFilteredPeople] = useState([]);
@@ -14,15 +17,19 @@ function TinderCards() {
   const [currentIndex, setCurrentIndex] = useState(people.length - 1);
   const [lastDirection, setLastDirection] = useState();
   const [rightSwipeIndex, setRightSwipeIndex] = useState();
+  // fetch data for photo cards.
   const fetchProfilePhotos = async () => {
     try {
+      // get data from db
       const userInfo = collection(db, "UserInfo");
       const q = query(userInfo, where("profilePhoto.availability", "==", true));
       const doc = await getDocs(q);
       const data = doc.docs;
       setPeople((people) => []);
+      // populated data
       data.map((person) => {
         console.log(person.id, person.data(), people);
+        // filetering data by sports or not filtering.
         if (
           person.data().personalInfo?.sport == activeFilter ||
           activeFilter == ""
@@ -81,7 +88,6 @@ function TinderCards() {
     setRightSwipeIndex(idx);
     // handle the case in which go back is pressed before card goes outOfFrame
     currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
-    // TODO: when quickly swipe and restore multiple times the same card,
     // it happens multiple outOfFrame events are queued and the card disappear
     // during latest swipes. Only the last outOfFrame event should be considered valid
   };
@@ -97,15 +103,17 @@ function TinderCards() {
     fetchProfilePhotos();
   }, [activeFilter]);
 
+  // render swiping card components
   return (
     <div>
       <div className="tinderCards_cardContainers">
+        {/* populating filtered cards */}
         {people.map((person, index) => (
           <TinderCard
             ref={childRefs[index]}
             className="swipe"
             key={person.uid}
-            // line below disables swip up and down. Might have to delete later
+            // preventSwipe disables swip up and downr
             preventSwipe={["down", "up"]}
             flickOnSwipe={[false]}
             onSwipe={(dir) => swiped(dir, person.name, index)}
@@ -122,6 +130,7 @@ function TinderCards() {
           </TinderCard>
         ))}
       </div>
+      {/* redering conatins filter and showing direction cards*/}
       <SwipeButtons setActiveFilter={setActiveFilter} swipe={swipe} />
     </div>
   );

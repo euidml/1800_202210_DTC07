@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function Acknowledgment() {
+export default function Support() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -19,7 +19,7 @@ export default function Acknowledgment() {
 
   return (
     <div>
-      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}><span className='Setting_text'>Acknowledgment</span></Button>
+      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> <span className='Setting_text'>Support</span></Button>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -27,16 +27,14 @@ export default function Acknowledgment() {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Created by DTC-TEAM07:"}
+          {"Select Your Desired Support"}
         </DialogTitle>
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-              <p>Edward Lee</p>
+              <Button href='https://discord.gg/VcyZ4K3'> Technical Support</Button>
               <br/>
-              <p>Hairun Huang</p>
-              <br/>
-              <p>Jason Lui</p>
+              <Button href='https://www.optionsforsexualhealth.org/care/'> Medical Support</Button>
           </DialogContentText>
         </DialogContent>
 

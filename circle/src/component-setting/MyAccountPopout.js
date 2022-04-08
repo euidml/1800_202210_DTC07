@@ -5,10 +5,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { auth, db } from "./firebase";
+import { auth, db } from "../component-global/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { query, collection, getDoc, where, doc } from "firebase/firestore";
-// import {app} from "./firebase"
+import {  getDoc, doc } from "firebase/firestore";
 
 function MyAccountPopout() {
   // initiated data we're gonna use with useState()

@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { Link } from "react-router-dom";
 import "./Favorite.css";
-import { async } from "@firebase/util";
 import {
   collection,
   getDoc,
@@ -12,32 +8,37 @@ import {
   getDocs,
   where,
   documentId,
-  setDoc,
   addDoc,
   Timestamp,
   updateDoc,
   arrayUnion
 } from "firebase/firestore";
-import { auth, db } from "./firebase";
+import { auth, db } from "../component-global/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+// redering "liked" page
 function Favorite() {
+  // declaring data we will use
   const [name, setName] = useState("");
   const [photoRef, setPhotoRef] = useState("");
   const [user] = useAuthState(auth);
   const [favouritePeople, setFavourtiePeople] = useState([]);
   const [fetchStatus, setFetchStatus] = useState(true);
+  // fectch data of like people
   const fetchFavouriteProfiles = async () => {
     try {
       if (fetchStatus) {
+        // fetch list of liked people
         const docRef = doc(db, "UserInfo", user?.uid);
         const userData = (await getDoc(docRef)).data();
         setName(userData.name);
         setPhotoRef(userData.profilePhoto.photo);
         const userFavouriteList = userData.likedPeople;
+        // fecch info/data of liked people
         const userRef = collection(db, "UserInfo");
         const q = query(userRef, where(documentId(), "in", userFavouriteList));
         const data = await getDocs(q);
+        // storing data of liked people.
         data.forEach((doc) => {
           favouritePeople.push([doc.data(), doc.id]);
         });
@@ -47,7 +48,9 @@ function Favorite() {
       console.log(err);
     }
   };
+  // A function to create a chat room
   const createChatRoom = async (partnerUid, partnerName, partnerPictureSrc) => {
+    // create chat room at "chatRooms" collection
     const docRef = await addDoc(collection(db, "chatRooms"), {
       chatLogs: [],
       infos: {
@@ -58,8 +61,9 @@ function Favorite() {
         { name: name, uid: user.uid, photo: photoRef },
         { name: partnerName, uid: partnerUid, photo: partnerPictureSrc }
       ],
-      chatLogs:[]
+      chatLogs: []
     });
+    // append info of chat room for each user's side
     await updateDoc(doc(db, "UserInfo", user.uid), {
       chatRooms: arrayUnion({
         chatRoom: docRef.id,
@@ -73,6 +77,7 @@ function Favorite() {
       })
     });
   };
+  // rendering and populating proflie of liked people
   const rendering = () => {
     return favouritePeople.map((person) => (
       <div className="images">
@@ -93,19 +98,13 @@ function Favorite() {
   useEffect(() => {
     fetchFavouriteProfiles();
   }, []);
-
+  // rendering the page.
   return (
     <div>
-      {/* <Link to="/dashboard">
-        <IconButton>
-        <ArrowBackIosNewIcon className='backarrow' fontSize='large' />
-        </IconButton>
-        </Link> */}
-
       <h2 className="fav">💛 Your liked people 💛</h2>
       <div className="img_container">{rendering()}</div>
     </div>
-  ) 
+  );
 }
 
 export default Favorite;

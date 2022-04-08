@@ -1,9 +1,9 @@
-import "../src/Profilepage.css"
+import "./Profilepage.css"
 import Profileform from "./Profileform"
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link as RouterDomLink, useNavigate } from "react-router-dom";
-import { auth, db } from "./firebase";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../component-global/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 
 

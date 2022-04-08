@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -17,11 +17,10 @@ import CreateRoundedIcon from "@mui/icons-material/CreateRounded";
 import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import GroupsRoundedIcon from "@mui/icons-material/GroupsRounded";
-import { logout, auth, useAuth, db } from "./firebase";
+import {  auth, db } from "../component-global/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { doc, updateDoc, getDoc } from "firebase/firestore";
-import { fabClasses } from "@mui/material";
+import { doc, updateDoc} from "firebase/firestore";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -34,9 +33,6 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Settingpage() {
   const [loading, setLoading] = useState(false);
-  // const [photoURL, setPhotoURL] = useState(
-  //   "https://w7.pngwing.com/pngs/223/244/png-transparent-computer-icons-avatar-user-profile-avatar-heroes-rectangle-black.png"
-  // );
   const [people, setPeople] = useState([]);
   const [name, userName] = useState("")
   const [user] = useAuthState(auth);

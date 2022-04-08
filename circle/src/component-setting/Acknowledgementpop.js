@@ -1,15 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-// import { logout } from "./firebase"; <= If used for logout button, it creates a buggy process
-import { Link as RouterDomLink } from "react-router-dom";
-import {logout} from "./firebase"
 
-export default function LogOutPopout() {
+export default function Acknowledgment() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -22,9 +19,7 @@ export default function LogOutPopout() {
 
   return (
     <div>
-      <Button variant="outlined" fullWidth={true} color='error' onClick={handleClickOpen}>
-        LOGOUT
-      </Button>
+      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}><span className='Setting_text'>Acknowledgment</span></Button>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -32,16 +27,21 @@ export default function LogOutPopout() {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Are you sure?"}
+          {"Created by DTC-TEAM07:"}
         </DialogTitle>
+
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Proceeding with this action will sign you out.
+              <p>Edward Lee</p>
+              <br/>
+              <p>Hairun Huang</p>
+              <br/>
+              <p>Jason Lui</p>
           </DialogContentText>
         </DialogContent>
+
         <DialogActions>
-          <Button onClick={handleClose}>No</Button>
-          <Button onClick={logout} component={RouterDomLink} to="/" >Yes</Button>
+          <Button onClick={handleClose}>Close</Button>
         </DialogActions>
       </Dialog>
     </div>
