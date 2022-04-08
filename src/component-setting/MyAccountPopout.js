@@ -40,13 +40,11 @@ function MyAccountPopout() {
     setOpen(false);
   };
 
-//   const [currentUser, setCurrentUser] = useState()
-
   useEffect(() => {
     fetchUserInfo();
-    // app.auth().onAuthStateChanged((user) => {setCurrentUser(user)})
   }, [])
 
+  // Popup for My Account to display user information
   return (
     <div>
       <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> <span className='Setting_text'>My Account</span></Button>
@@ -60,6 +58,7 @@ function MyAccountPopout() {
           {"User Account Info"}
         </DialogTitle>
 
+{/* Fetch email and name from firebase and displays the user's name and email */}
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
           <p style={{marginBottom: "8px"}}><span style={{fontWeight: "bold"}}>Name:</span> {name}</p>
@@ -67,6 +66,7 @@ function MyAccountPopout() {
           </DialogContentText>
         </DialogContent>
 
+{/* Close button for the popup */}
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
         </DialogActions>

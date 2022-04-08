@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function Acknowledgment() {
+export default function Version() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -16,10 +16,10 @@ export default function Acknowledgment() {
   const handleClose = () => {
     setOpen(false);
   };
-
+// Popup for Version button
   return (
     <div>
-      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}><span className='Setting_text'>Acknowledgment</span></Button>
+      <Button fullWidth={true} style={{justifyContent: "flex-start", color: 'black'}} onClick={handleClickOpen}> <span className='Setting_text'>App Information</span></Button>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -27,16 +27,11 @@ export default function Acknowledgment() {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Created by DTC-TEAM07:"}
+          {"App Version"}
         </DialogTitle>
-
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-              <p>Edward Lee</p>
-              <br/>
-              <p>Hairun Huang</p>
-              <br/>
-              <p>Jason Lui</p>
+              1.0
           </DialogContentText>
         </DialogContent>
 

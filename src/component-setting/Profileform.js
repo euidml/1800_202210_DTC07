@@ -2,7 +2,7 @@ import "./Profilepage.css";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../component-global/firebase";
-import { setDoc, getDoc, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import editUserInfo from "./ProfileFormDB";
 
 const Profileform = () => {
@@ -31,15 +31,15 @@ const Profileform = () => {
         }
       });
   }
+  // When user submits answer, change value in the firebase to the new user input
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user.uid);
     editUserInfo(user.uid, name, age, gender, sport, hobbies, game);
   };
   return (
     <form className="form" onSubmit={handleSubmit}>
       <h1> Profile Information </h1>
-
+{/* Value for User's Name */}
       <label> Full Name </label>
       <input
         id="nameInput"
@@ -47,7 +47,7 @@ const Profileform = () => {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-
+{/* Value for User's Age */}
       <label> Age </label>
       <input
         id="ageInput"
@@ -55,7 +55,7 @@ const Profileform = () => {
         value={age}
         onChange={(e) => setAge(e.target.value)}
       />
-
+{/* Value for User's Gender */}
       <label> Gender </label>
       <input
         id="genderInput"
@@ -63,7 +63,7 @@ const Profileform = () => {
         value={gender}
         onChange={(e) => setGender(e.target.value)}
       />
-
+{/* Value for User's Sport */}
       <label> Main sport </label>
       <input
         id="sportInput"
@@ -71,7 +71,7 @@ const Profileform = () => {
         value={sport}
         onChange={(e) => setSport(e.target.value)}
       />
-
+{/* Value for User's Hobbies */}
       <label> Hobbies </label>
       <input
         id="hobbiesInput"
@@ -79,7 +79,7 @@ const Profileform = () => {
         value={hobbies}
         onChange={(e) => setHobbies(e.target.value)}
       />
-
+{/* Value for User's Question */}
       <label> Two Truths, One Lie </label>
       <textarea
         id="gameInput"
