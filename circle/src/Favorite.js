@@ -102,10 +102,10 @@ function Favorite() {
         </IconButton>
         </Link> */}
 
-      <h2 className="fav">💛 Your favorited people</h2>
+      <h2 className="fav">💛 Your liked people 💛</h2>
       <div className="img_container">{rendering()}</div>
     </div>
-  );
+  ) 
 }
 
 export default Favorite;

@@ -85,7 +85,7 @@ function ChatScreen({ chatRoomId }) {
       setMessages(messages);
     });
     fetchUserNames();
-    // messagesShowUp();
+    messagesShowUp();
   }, []);
   const messagesShowUp = () =>
     messages.map((message) =>
@@ -114,9 +114,7 @@ function ChatScreen({ chatRoomId }) {
         text: input,
         sentTime: messageSentTime
       }),
-      infos: {
-        latestChat: messageSentTime
-      }
+      "infos.latestChat": messageSentTime
     });
     setMessages([...messages, { message: input }]);
     setInput("");
