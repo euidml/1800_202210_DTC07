@@ -1,21 +1,31 @@
-## My Web Application (Add your Title here)
+## DTC Team07 Project Circle
+![Project Image](./images/circleNewColor.png)
 
-* [General info](#general-info)
+> Short Project Blurb
+---
+
+
+* [Description](#general-info)
+* [How to use](#how-to-use)
 * [Technologies](#technologies)
 * [Contents](#content)
+* [Author Info](#author-info)
+---
 
-## General Info
-This browser based web application to ...
-* Hi my name is Edward. I'm excited about this project because I want to enhance and upgrade my coding skills!
-* Hi my name is run. I'm excited to get it done.
-* Hi my name is Jason. I'm exited about this project because i am new
-	
+
+## Description
+
+---
+
+## How-to-use
+
+---
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
-* JavaScript
-* Bootstrap 
-* ...
+* React
+* Firebase
+---
 	
 ## Content
 Content of the project folder:
@@ -40,8 +50,13 @@ Firebase hosting files:
 
 
 ```
+---
+## Author-info
+* Designer: Jason Lui
+* Coder: Edward Lee
+* Product Manager: Hairun Huang
 
-Tips for file naming files and folders:
-* use lowercase with no spaces
-* use dashes (not underscore) for word separation
+---
+**Version 1.0.0**
+[Back to the top](#general-info)
 
