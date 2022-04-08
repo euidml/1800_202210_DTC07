@@ -1,5 +1,5 @@
 ## DTC Team07 Project Circle
-![Project Image](./images/circleNewColor.png)
+![Project Image](./images/circleLogo.png)
 
 > A dating app designed for Olympic athletes!
 ---
