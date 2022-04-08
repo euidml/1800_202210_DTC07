@@ -15,7 +15,7 @@
 
 
 ## Description
-A simple dating web app that allows users to filter, swipe and send chat messages to people.
+A simple dating web app that allows users to filter, swipe, and send chat messages to people.
 
 ---
 ## How To Use
@@ -33,55 +33,38 @@ Technologies used for this project:
 * Firebase
 ---
 	
-## Content
+## Contents
 Content of the project folder:
 
 ```
- Top level of project folder: 
+
+Top-level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── index.html               # Default index.html
+├── circle                   # Main components
+├── images                   # images                 
+├── styles                   # Default css
 └── README.md                # README file
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
-├── images                   # Folder for images
-    /circleNewColor.jpg     
-    /Sabrina.jpg          
-    /like.png               
-    /dislike.png            
-    /bottompic.png           
-├── scripts                  # Folder for scripts
-    /App.js                  
-    /Chat.js                 
-    /Chats.js               
-    /ChatScreen.js          
-    /Favorite.js             
-    /firebase.js             
-    /Header.js               
-    /index.js                
-    /LogOutPopout.js         
-    /main.js                 
-    /mainProfileCards.js     
-    /MyAccountPopout.js      
-    /Palette.js              
-    /Profileform.js          
-    /Profilepage.js          
-    /reportWebVitals.js      
-    /Settingpage.js          
-    /SettingProfileCard.js   
-    /setupTests.js           
-    /SupportPopup.js         
-    /SwipeButtons.js          
-├── styles                  # Folder for stylesheets               
-    /App.css                 
-    /Chat.css                
-    /Favorite.css            
-    /Header.css              
-    /index.css               
-    /mainProfileCards.css    
-    /Profilepage.css         
-    /SettingProfileCards.css 
-    SwipeButtons.css         
+├── public                   # Folder for default files      
+├── src                      # Folder for main react components
+    ├──component-chat
+    ├──component-global               
+    ├──component-liked             
+    ├──component-login              
+    ├──component-main              
+    ├──component-setting
+    /App.test.js
+    /index.css
+    /index.js
+    /reportWebVitals.js
+    /setupTests.js   
+├── .gitignore
+├── package-lock.json
+├── package.json
+
 
 
 Firebase hosting files: 
