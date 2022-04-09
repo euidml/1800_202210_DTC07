@@ -23,14 +23,16 @@ A simple dating web app that allows users to filter, swipe, and send chat messag
 
 ---
 ## References
-Profile pictures: Google Image
-
+* Profile pictures: Google Image
+* In-app icons from MUI.com
+* Logo homemade!
 ---
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
 * React
-* Firebase
+* Firebase, Firestore
+* Netlify
 ---
 	
 ## Contents
@@ -42,7 +44,7 @@ Top-level of project folder:
 ├── .gitignore               # Git ignore file
 ├── index.html               # Default index.html
 ├── circle                   # Main components
-├── images                   # images                 
+├── images                   # Folder for images                 
 ├── styles                   # Default css
 └── README.md                # README file
 
@@ -64,11 +66,6 @@ It has the following subfolders and files:
 ├── .gitignore
 ├── package-lock.json
 ├── package.json
-
-
-
-Firebase hosting files: 
-├── .firebaserc...
 
 
 ```
